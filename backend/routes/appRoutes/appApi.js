@@ -29,6 +29,8 @@ const offerController = require('@/controllers/appControllers/offerController');
 const kycController = require('@/controllers/appControllers/kycController');
 const inventoryController = require('@/controllers/appControllers/inventoryController');
 
+const customerController = require('@/controllers/appControllers/customerController');
+
 // //_________________________________ API for employees_____________________
 router
   .route('/employee/create')
@@ -342,5 +344,19 @@ router.route('/kyc/delete/:id').delete(hasPermission('delete'), catchErrors(kycC
 router.route('/kyc/search').get(hasPermission('read'), catchErrors(kycController.search));
 router.route('/kyc/list').get(hasPermission('read'), catchErrors(kycController.list));
 router.route('/kyc/filter').get(hasPermission('read'), catchErrors(kycController.filter));
+
+// //_____________________________________ API for clients __________________________________________________
+router.route('/client/create').post(hasPermission('create'), catchErrors(clientController.create));
+router.route('/client/read/:id').get(hasPermission('read'), catchErrors(clientController.read));
+router
+  .route('/client/update/:id')
+  .patch(hasPermission('update'), catchErrors(clientController.update));
+router
+  .route('/client/delete/:id')
+  .delete(hasPermission('delete'), catchErrors(clientController.delete));
+router.route('/client/search').get(hasPermission('read'), catchErrors(clientController.search));
+router.route('/client/list').get(hasPermission('read'), catchErrors(clientController.list));
+router.route('/client/filter').get(hasPermission('read'), catchErrors(clientController.filter));
+router.route('/client/summary').get(hasPermission('read'), catchErrors(clientController.summary));
 
 module.exports = router;

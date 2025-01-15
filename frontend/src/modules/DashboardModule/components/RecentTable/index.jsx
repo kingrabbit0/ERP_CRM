@@ -13,7 +13,7 @@ import useResponsiveTable from '@/hooks/useResponsiveTable';
 
 export default function RecentTable({ ...props }) {
   const translate = useLanguage();
-  let { entity, dataTableColumns } = props;
+  let { entity, dataTableColumns, sampletDataSource } = props;
 
   const items = [
     {
@@ -92,7 +92,8 @@ export default function RecentTable({ ...props }) {
   const { result, isLoading, isSuccess } = useFetch(asyncList);
   const firstFiveItems = () => {
     if (isSuccess && result) return result.slice(0, 5);
-    return [];
+    return sampletDataSource.slice(0, 5);
+    // return [];
   };
 
   const { expandedRowData, tableColumns, tableHeader } = useResponsiveTable(
@@ -105,8 +106,9 @@ export default function RecentTable({ ...props }) {
       <Table
         columns={tableColumns}
         rowKey={(item) => item._id}
-        dataSource={isSuccess && firstFiveItems()}
-        pagination={false}
+        // dataSource={isSuccess && firstFiveItems()}
+        dataSource={firstFiveItems()}
+        pagination={true}
         loading={isLoading}
         expandable={
           expandedRowData.length

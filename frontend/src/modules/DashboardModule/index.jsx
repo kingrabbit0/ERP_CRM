@@ -37,7 +37,7 @@ export default function DashboardModule() {
   const notificationTableColumns = [
     {
       title: translate('contact_person'),
-      dataIndex: 'person',
+      dataIndex: 'contact',
     },
     {
       title: translate('equipment'),
@@ -52,23 +52,23 @@ export default function DashboardModule() {
   const upcomingTableColumns = [
     {
       title: translate('customer_name'),
-      dataIndex: 'customer_name',
+      dataIndex: 'customer',
     },
     {
       title: translate('equipment_name'),
-      dataIndex: ['equipment'],
+      dataIndex: 'equipment',
     },
     {
       title: translate('serial_number'),
-      dataIndex: ['equipment', 'serial'],
+      dataIndex: 'serial',
     },
     {
       title: translate('calibration_due_date'),
-      dataIndex: ['equipment', 'serial', 'due_date'],
+      dataIndex: 'due_date',
     },
     {
       title: translate('contact_person'),
-      dataIndex: ['equipment', 'serial', 'person'],
+      dataIndex: 'contact',
     },
     {
       title: translate('Status'),
@@ -120,10 +120,92 @@ export default function DashboardModule() {
         }
         prefix={translate(prefix)}
         isLoading={isLoading}
-        tagContent={result?.total && moneyFormatter({ amount: result?.total })}
+        tagContent={5}
+        // tagContent={result?.total && moneyFormatter({ amount: result?.total })}
       />
     );
   });
+
+  const notificationDataSource = [
+    {
+      key: '1',
+      contact: 'Mike',
+      equipment: 'Guiter',
+      timestamp: '2015-03-25',
+    },
+    {
+      key: '2',
+      contact: 'John',
+      equipment: 'Guiter',
+      timestamp: '2015-03-25',
+    },
+    {
+      key: '3',
+      contact: 'Albert',
+      equipment: 'Guiter',
+      timestamp: '2015-03-25',
+    },
+    {
+      key: '4',
+      contact: 'David',
+      equipment: 'Guiter',
+      timestamp: '2015-03-25',
+    },
+    {
+      key: '5',
+      contact: 'Scott',
+      equipment: 'Guiter',
+      timestamp: '2015-03-25',
+    },
+  ];
+
+  const upcomingDataSource = [
+    {
+      key: '1',
+      customer: 'Mike',
+      equipment: 'Guiter',
+      serial: '123456',
+      due_date: '2015-03-25',
+      contact: 'John',
+      status: 'Pending',
+    },
+    {
+      key: '2',
+      customer: 'John',
+      equipment: 'Guiter',
+      serial: '456789',
+      due_date: '2015-03-15',
+      contact: 'Albert',
+      status: 'Complete',
+    },
+    {
+      key: '3',
+      customer: 'Albert',
+      equipment: 'Guiter',
+      serial: '235689',
+      due_date: '2015-05-25',
+      contact: 'John',
+      status: 'Pending',
+    },
+    {
+      key: '4',
+      customer: 'David',
+      equipment: 'Guiter',
+      serial: '124578',
+      due_date: '2015-03-02',
+      contact: 'Scott',
+      status: 'Complete',
+    },
+    {
+      key: '5',
+      customer: 'Scott',
+      equipment: 'Guiter',
+      serial: '112356',
+      due_date: '2015-08-05',
+      contact: 'David',
+      status: 'Complete',
+    },
+  ];
 
   return (
     <>
@@ -136,15 +218,20 @@ export default function DashboardModule() {
               {translate('Notification')}
             </h3>
 
-            <RecentTable entity={'notification'} dataTableColumns={notificationTableColumns} />
+            <RecentTable
+              entity={'notification'}
+              dataTableColumns={notificationTableColumns}
+              sampletDataSource={notificationDataSource}
+            />
           </div>
         </Col>
         <Col className="gutter-row w-full" sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 6 }}>
-          <CustomerPreviewCard
+          {/* <CustomerPreviewCard
             isLoading={clientLoading}
             activeCustomer={clientResult?.active}
             newCustomer={clientResult?.new}
-          />
+          /> */}
+          <CustomerPreviewCard isLoading={clientLoading} activeCustomer={10} newCustomer={90} />
         </Col>
       </Row>
       <div className="space30"></div>
@@ -155,7 +242,11 @@ export default function DashboardModule() {
               {translate('Upcoming Calibrations')}
             </h3>
 
-            <RecentTable entity={'upcoming'} dataTableColumns={upcomingTableColumns} />
+            <RecentTable
+              entity={'upcoming'}
+              dataTableColumns={upcomingTableColumns}
+              sampletDataSource={upcomingDataSource}
+            />
           </div>
         </Col>
       </Row>

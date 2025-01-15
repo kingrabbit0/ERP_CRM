@@ -104,9 +104,9 @@ export default function DataTable({ config, extra = [] }) {
                 case 'delete':
                   handleDelete(record);
                   break;
-                case 'updatePassword':
-                  handleUpdatePassword(record);
-                  break;
+                // case 'updatePassword':
+                //   handleUpdatePassword(record);
+                //   break;
 
                 default:
                   break;

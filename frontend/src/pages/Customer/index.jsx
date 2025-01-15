@@ -6,15 +6,15 @@ import useLanguage from '@/locale/useLanguage';
 
 export default function Customer() {
   const translate = useLanguage();
-  const entity = 'client';
+  const entity = 'customer';
 
   const searchConfig = {
-    displayLabels: ['company'],
-    searchFields: 'company,managerSurname,managerName',
+    displayLabels: ['customer'],
+    searchFields: 'customer,customerName',
     outputValue: '_id',
   };
 
-  const entityDisplayLabels = ['company'];
+  const entityDisplayLabels = ['customer'];
 
   const readColumns = [
     {
@@ -41,7 +41,7 @@ export default function Customer() {
   const dataTableColumns = [
     {
       title: translate('Customer Name'),
-      dataIndex: 'name',
+      dataIndex: 'customer',
     },
     {
       title: translate('Equipment Count'),
@@ -55,36 +55,11 @@ export default function Customer() {
       title: translate('Last Activity'),
       dataIndex: 'lastActivity',
     },
-    {
-      title: translate('Edit'),
-      key: 'enabled',
-      onCell: () => {
-        return {
-          props: {
-            style: {
-              width: '60px',
-            },
-          },
-        };
-      },
-      render: () => {
-        return (
-          <Button
-            color={'primary'}
-            variant={'solid'}
-            disabled={false}
-            onClick={() => {
-              console.log('onClick button');
-            }}
-          />
-        );
-      },
-    },
   ];
 
   const Labels = {
     PANEL_TITLE: translate('customer'),
-    DATATABLE_TITLE: translate('customer_list'),
+    DATATABLE_TITLE: translate('customer'),
     ADD_NEW_ENTITY: translate('add_new_customer'),
     ENTITY_NAME: translate('customer'),
     CREATE_ENTITY: translate('save'),
