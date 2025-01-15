@@ -1,5 +1,5 @@
 import { Tag, Divider, Row, Col, Spin, Tooltip } from 'antd';
-import {useMoney} from "@/settings";
+import { useMoney } from '@/settings';
 
 export default function AnalyticSummaryCard({
   title,
@@ -8,14 +8,14 @@ export default function AnalyticSummaryCard({
   prefix,
   isLoading = false,
 }) {
-    const { moneyFormatter } = useMoney();
+  const { moneyFormatter } = useMoney();
   return (
     <Col
       className="gutter-row"
       xs={{ span: 24 }}
       sm={{ span: 12 }}
       md={{ span: 12 }}
-      lg={{ span: 6 }}
+      lg={{ span: 8 }}
     >
       <div
         className="whiteBox shadow"

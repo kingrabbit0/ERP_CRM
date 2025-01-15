@@ -1,20 +1,20 @@
 import CrudModule from '@/modules/CrudModule/CrudModule';
-import CustomerForm from '@/forms/CustomerForm';
+import EquipmentForm from '@/forms/EquipmentForm';
 
 import { Button } from 'antd';
 import useLanguage from '@/locale/useLanguage';
 
-export default function Customer() {
+export default function Equipment() {
   const translate = useLanguage();
   const entity = 'client';
 
   const searchConfig = {
-    displayLabels: ['company'],
-    searchFields: 'company,managerSurname,managerName',
+    displayLabels: ['equipment'],
+    searchFields: 'equipment',
     outputValue: '_id',
   };
 
-  const entityDisplayLabels = ['company'];
+  const entityDisplayLabels = ['equipment'];
 
   const readColumns = [
     {
@@ -40,24 +40,31 @@ export default function Customer() {
   ];
   const dataTableColumns = [
     {
-      title: translate('Customer Name'),
+      title: translate('Equipment Name'),
       dataIndex: 'name',
     },
     {
-      title: translate('Equipment Count'),
-      dataIndex: 'equipmentCount',
+      title: translate('Serial Number'),
+      dataIndex: 'serialNumber',
     },
     {
-      title: translate('Primary Contact'),
-      dataIndex: 'primaryContact',
+      title: translate('Customer Name'),
+      dataIndex: 'customerName',
     },
     {
-      title: translate('Last Activity'),
-      dataIndex: 'lastActivity',
+      title: translate('Calibration Interval'),
+      dataIndex: 'calibrationInterval',
+    },
+    {
+      title: translate('Calibration Next Date'),
+      dataIndex: 'calibrationNextDate',
+    },
+    {
+      title: translate('Contact Person'),
+      dataIndex: 'assignedPerson',
     },
     {
       title: translate('Edit'),
-      key: 'enabled',
       onCell: () => {
         return {
           props: {
@@ -83,10 +90,10 @@ export default function Customer() {
   ];
 
   const Labels = {
-    PANEL_TITLE: translate('customer'),
-    DATATABLE_TITLE: translate('customer_list'),
-    ADD_NEW_ENTITY: translate('add_new_customer'),
-    ENTITY_NAME: translate('customer'),
+    PANEL_TITLE: translate('equipment'),
+    DATATABLE_TITLE: translate('equipment_list'),
+    ADD_NEW_ENTITY: translate('add_new_equipment'),
+    ENTITY_NAME: translate('equipment'),
     CREATE_ENTITY: translate('save'),
     UPDATE_ENTITY: translate('update'),
   };
@@ -104,8 +111,8 @@ export default function Customer() {
 
   return (
     <CrudModule
-      createForm={<CustomerForm />}
-      updateForm={<CustomerForm isUpdateForm={true} />}
+      createForm={<EquipmentForm />}
+      updateForm={<EquipmentForm isUpdateForm={true} />}
       config={config}
     />
   );

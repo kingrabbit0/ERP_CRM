@@ -9,7 +9,6 @@ import useFetch from '@/hooks/useFetch';
 import RecentTable from './components/RecentTable';
 
 import SummaryCard from './components/SummaryCard';
-import PreviewCard from './components/PreviewCard';
 import CustomerPreviewCard from './components/CustomerPreviewCard';
 
 export default function DashboardModule() {
@@ -27,42 +26,55 @@ export default function DashboardModule() {
     request.summary({ entity: 'offer' })
   );
 
-  const { result: paymentResult, isLoading: paymentLoading } = useFetch(() =>
-    request.summary({ entity: 'payment' })
-  );
+  // const { result: paymentResult, isLoading: paymentLoading } = useFetch(() =>
+  //   request.summary({ entity: 'payment' })
+  // );
 
   const { result: clientResult, isLoading: clientLoading } = useFetch(() =>
     request.summary({ entity: 'client' })
   );
 
-  const dataTableColumns = [
+  const notificationTableColumns = [
     {
-      title: translate('number'),
-      dataIndex: 'number',
+      title: translate('contact_person'),
+      dataIndex: 'person',
     },
     {
-      title: translate('Client'),
-      dataIndex: ['client', 'company'],
+      title: translate('equipment'),
+      dataIndex: 'equipment',
     },
+    {
+      title: translate('notification_date'),
+      dataIndex: 'timestamp',
+    },
+  ];
 
+  const upcomingTableColumns = [
     {
-      title: translate('Total'),
-      dataIndex: 'total',
-      onCell: () => {
-        return {
-          style: {
-            textAlign: 'right',
-            whiteSpace: 'nowrap',
-          },
-        };
-      },
-      render: (total) => moneyFormatter({ amount: total }),
+      title: translate('customer_name'),
+      dataIndex: 'customer_name',
+    },
+    {
+      title: translate('equipment_name'),
+      dataIndex: ['equipment'],
+    },
+    {
+      title: translate('serial_number'),
+      dataIndex: ['equipment', 'serial'],
+    },
+    {
+      title: translate('calibration_due_date'),
+      dataIndex: ['equipment', 'serial', 'due_date'],
+    },
+    {
+      title: translate('contact_person'),
+      dataIndex: ['equipment', 'serial', 'person'],
     },
     {
       title: translate('Status'),
       dataIndex: 'status',
       render: (status) => {
-        let color = status === 'Draft' ? 'volcano' : 'green';
+        let color = status === 'Pending' ? 'volcano' : 'green';
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
@@ -73,31 +85,25 @@ export default function DashboardModule() {
     {
       result: invoiceResult,
       isLoading: invoiceLoading,
-      entity: 'invoice',
-      title: translate('Invoices preview'),
+      entity: 'active_customer',
+      prefix: 'active_customer',
     },
     {
       result: quoteResult,
       isLoading: quoteLoading,
-      entity: 'quote',
-      title: translate('quotes preview'),
+      entity: 'equipment_total',
+      prefix: 'equipment',
     },
     {
       result: offerResult,
       isLoading: offerLoading,
-      entity: 'offer',
-      title: translate('offers preview'),
-    },
-    {
-      result: paymentResult,
-      isLoading: paymentLoading,
-      entity: 'payment',
-      title: translate('payments preview'),
+      entity: 'calibration_upcoming',
+      prefix: 'calibration_upcoming',
     },
   ];
 
   const cards = entityData.map((data, index) => {
-    const { result, entity, isLoading } = data;
+    const { result, entity, isLoading, prefix } = data;
 
     if (entity === 'offer') return null;
 
@@ -106,59 +112,31 @@ export default function DashboardModule() {
         key={index}
         title={data?.entity === 'payment' ? translate('Payment') : translate(data?.entity)}
         tagColor={
-          data?.entity === 'invoice' ? 'cyan' : data?.entity === 'quote' ? 'purple' : 'green'
+          data?.entity === 'active_customer'
+            ? 'cyan'
+            : data?.entity === 'equipment_total'
+            ? 'purple'
+            : 'green'
         }
-        prefix={translate('This month')}
+        prefix={translate(prefix)}
         isLoading={isLoading}
         tagContent={result?.total && moneyFormatter({ amount: result?.total })}
       />
     );
   });
 
-  const statisticCards = entityData.map((data, index) => {
-    const { result, entity, isLoading, title } = data;
-
-    if (entity === 'payment') return null;
-
-    return (
-      <PreviewCard
-        key={index}
-        title={title}
-        isLoading={isLoading}
-        entity={entity}
-        statistics={
-          !isLoading &&
-          result?.performance?.map((item) => ({
-            tag: item?.status,
-            color: 'blue',
-            value: item?.percentage,
-          }))
-        }
-      />
-    );
-  });
-
   return (
     <>
-      <Row gutter={[32, 32]}>
-        {cards}
-        <SummaryCard
-          title={translate('Due Balance')}
-          tagColor={'red'}
-          prefix={translate('Not Paid')}
-          isLoading={invoiceLoading}
-          tagContent={
-            invoiceResult?.total_undue && moneyFormatter({ amount: invoiceResult?.total_undue })
-          }
-        />
-      </Row>
+      <Row gutter={[32, 32]}>{cards}</Row>
       <div className="space30"></div>
       <Row gutter={[32, 32]}>
         <Col className="gutter-row w-full" sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 18 }}>
-          <div className="whiteBox shadow" style={{ height: 458 }}>
-            <Row className="pad20" gutter={[0, 0]}>
-              {statisticCards}
-            </Row>
+          <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
+            <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
+              {translate('Notification')}
+            </h3>
+
+            <RecentTable entity={'notification'} dataTableColumns={notificationTableColumns} />
           </div>
         </Col>
         <Col className="gutter-row w-full" sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 6 }}>
@@ -171,22 +149,13 @@ export default function DashboardModule() {
       </Row>
       <div className="space30"></div>
       <Row gutter={[32, 32]}>
-        <Col className="gutter-row w-full" sm={{ span: 24 }} lg={{ span: 12 }}>
+        <Col className="gutter-row w-full" sm={{ span: 32 }} md={{ span: 32 }} lg={{ span: 32 }}>
           <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
             <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
-              {translate('Recent Invoices')}
+              {translate('Upcoming Calibrations')}
             </h3>
 
-            <RecentTable entity={'invoice'} dataTableColumns={dataTableColumns} />
-          </div>
-        </Col>
-
-        <Col className="gutter-row w-full" sm={{ span: 24 }} lg={{ span: 12 }}>
-          <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
-            <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
-              {translate('Recent Quotes')}
-            </h3>
-            <RecentTable entity={'quote'} dataTableColumns={dataTableColumns} />
+            <RecentTable entity={'upcoming'} dataTableColumns={upcomingTableColumns} />
           </div>
         </Col>
       </Row>

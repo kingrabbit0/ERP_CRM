@@ -8,6 +8,8 @@ const NotFound = lazy(() => import('@/pages/NotFound.jsx'));
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Customer = lazy(() => import('@/pages/Customer'));
+const Equipment = lazy(() => import('@/pages/Equipment'));
+const Notification = lazy(() => import('@/pages/Notification'));
 const Inventory = lazy(() => import('@/pages/Inventory'));
 const Order = lazy(() => import('@/pages/Order'));
 const Invoice = lazy(() => import('@/pages/Invoice'));
@@ -56,6 +58,14 @@ export default function AppRouter() {
     {
       path: '/customer',
       element: <Customer />,
+    },
+    {
+      path: '/equipment',
+      element: <Equipment />,
+    },
+    {
+      path: '/notification',
+      element: <Notification />,
     },
     {
       path: '/inventory',

@@ -40,8 +40,8 @@ const useMoney = () => {
 
   function moneyFormatter({ amount = 0 }) {
     return currency_position === 'before'
-      ? currency_symbol + ' ' + currencyFormat(amount)
-      : currencyFormat(amount) + ' ' + currency_symbol;
+      ? ' ' + currencyFormat(amount)
+      : currencyFormat(amount) + ' ';
   }
 
   function amountFormatter({ amount = 0 }) {

@@ -16,8 +16,8 @@ export default function CustomerForm({ isUpdateForm = false }) {
   return (
     <>
       <Form.Item
-        label={translate('company')}
-        name="company"
+        label={translate('customer_name')}
+        name="customerName"
         rules={[
           {
             required: true,
@@ -30,8 +30,8 @@ export default function CustomerForm({ isUpdateForm = false }) {
         <Input />
       </Form.Item>
       <Form.Item
-        label={translate('Manager first Name')}
-        name="managerName"
+        label={translate('customer_address')}
+        name="customerAddress"
         rules={[
           {
             required: true,
@@ -40,34 +40,9 @@ export default function CustomerForm({ isUpdateForm = false }) {
             validator: validateEmptyString,
           },
         ]}
-        style={{
-          display: 'inline-block',
-          width: 'calc(50%)',
-          paddingRight: '5px',
-        }}
       >
         <Input />
       </Form.Item>
-      <Form.Item
-        label={translate('Manager Last Name')}
-        name="managerSurname"
-        rules={[
-          {
-            required: true,
-          },
-          {
-            validator: validateEmptyString,
-          },
-        ]}
-        style={{
-          display: 'inline-block',
-          width: 'calc(50%)',
-          paddingLeft: '5px',
-        }}
-      >
-        <Input />
-      </Form.Item>
-
       <Form.Item
         name="phone"
         label={translate('Phone')}

@@ -25,10 +25,10 @@ const errorHandler = (error) => {
     notification.config({
       duration: 5,
     });
-    notification.error({
-      message: 'No internet connection',
-      description: 'Cannot connect to the server, Check your internet network',
-    });
+    // notification.error({
+    //   message: 'No internet connection',
+    //   description: 'Cannot connect to the server, Check your internet network',
+    // });
     return {
       success: false,
       result: null,

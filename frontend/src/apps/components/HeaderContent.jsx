@@ -142,7 +142,7 @@ export default function HeaderContent() {
         size="large"
       /> */}
 
-      <SelectLanguage />
+      {/* <SelectLanguage /> */}
     </Header>
   );
 }

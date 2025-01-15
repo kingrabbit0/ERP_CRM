@@ -12,15 +12,17 @@ import { useNavigate } from 'react-router-dom';
 import {
   SettingOutlined,
   CustomerServiceOutlined,
-  FileTextOutlined,
-  FileSyncOutlined,
+  // FileTextOutlined,
+  // FileSyncOutlined,
   DashboardOutlined,
-  TeamOutlined,
-  UserOutlined,
-  CreditCardOutlined,
+  // TeamOutlined,
+  // UserOutlined,
+  // CreditCardOutlined,
   MenuOutlined,
-  UserAddOutlined,
-  FileOutlined,
+  // UserAddOutlined,
+  // FileOutlined,
+  DesktopOutlined,
+  NotificationOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -54,49 +56,59 @@ function Sidebar({ collapsible }) {
       icon: <DashboardOutlined />,
       label: <Link to={'/'}>{translate('dashboard')}</Link>,
     },
-    {
-      key: 'lead',
-      icon: <UserAddOutlined />,
-      label: <Link to={'/lead'}>{translate('lead')}</Link>,
-    },
-    {
-      key: 'offer',
-      icon: <FileOutlined />,
-      label: <Link to={'/offer'}>{translate('offer')}</Link>,
-    },
+    // {
+    //   key: 'lead',
+    //   icon: <UserAddOutlined />,
+    //   label: <Link to={'/lead'}>{translate('lead')}</Link>,
+    // },
+    // {
+    //   key: 'offer',
+    //   icon: <FileOutlined />,
+    //   label: <Link to={'/offer'}>{translate('offer')}</Link>,
+    // },
     {
       key: 'customer',
       icon: <CustomerServiceOutlined />,
       label: <Link to={'/customer'}>{translate('customer')}</Link>,
     },
+    {
+      key: 'equipment',
+      icon: <DesktopOutlined />,
+      label: <Link to={'/equipment'}>{translate('equipment')}</Link>,
+    },
+    {
+      key: 'notification',
+      icon: <NotificationOutlined />,
+      label: <Link to={'/notification'}>{translate('notification')}</Link>,
+    },
     // { key: 'order', icon: <ShopOutlined />, label: <Link to={'/'}>Lead</Link> Order },
     // { key: 'inventory', icon: <InboxOutlined />, label: <Link to={'/'}>Lead</Link> Inventory },
     // { key: 'kyc', icon: <ShoppingCartOutlined />, label: <Link to={'/'}>Lead</Link> Kyc },
-    {
-      key: 'invoice',
-      icon: <FileTextOutlined />,
-      label: <Link to={'/invoice'}>{translate('invoice')}</Link>,
-    },
-    {
-      key: 'quote',
-      icon: <FileSyncOutlined />,
-      label: <Link to={'/quote'}>{translate('quote')}</Link>,
-    },
-    {
-      key: 'payment',
-      icon: <CreditCardOutlined />,
-      label: <Link to={'/payment'}>{translate('payment')}</Link>,
-    },
-    {
-      key: 'employee',
-      icon: <UserOutlined />,
-      label: <Link to={'/employee'}>{translate('employee')}</Link>,
-    },
-    {
-      key: 'admin',
-      icon: <TeamOutlined />,
-      label: <Link to={'/admin'}>{translate('admin')}</Link>,
-    },
+    // {
+    //   key: 'invoice',
+    //   icon: <FileTextOutlined />,
+    //   label: <Link to={'/invoice'}>{translate('invoice')}</Link>,
+    // },
+    // {
+    //   key: 'quote',
+    //   icon: <FileSyncOutlined />,
+    //   label: <Link to={'/quote'}>{translate('quote')}</Link>,
+    // },
+    // {
+    //   key: 'payment',
+    //   icon: <CreditCardOutlined />,
+    //   label: <Link to={'/payment'}>{translate('payment')}</Link>,
+    // },
+    // {
+    //   key: 'employee',
+    //   icon: <UserOutlined />,
+    //   label: <Link to={'/employee'}>{translate('employee')}</Link>,
+    // },
+    // {
+    //   key: 'admin',
+    //   icon: <TeamOutlined />,
+    //   label: <Link to={'/admin'}>{translate('admin')}</Link>,
+    // },
     {
       label: translate('Settings'),
       key: 'settings',
@@ -110,14 +122,14 @@ function Sidebar({ collapsible }) {
           key: 'emailTemplates',
           label: <Link to={'/email'}>{translate('email_templates')}</Link>,
         },
-        {
-          key: 'paymentMode',
-          label: <Link to={'/payment/mode'}>{translate('payment_mode')}</Link>,
-        },
-        {
-          key: 'taxes',
-          label: <Link to={'/taxes'}>{translate('taxes')}</Link>,
-        },
+        // {
+        //   key: 'paymentMode',
+        //   label: <Link to={'/payment/mode'}>{translate('payment_mode')}</Link>,
+        // },
+        // {
+        //   key: 'taxes',
+        //   label: <Link to={'/taxes'}>{translate('taxes')}</Link>,
+        // },
         {
           key: 'advancedSettings',
           label: <Link to={'/settings/advanced'}>{translate('advanced_settings')}</Link>,
