@@ -5,10 +5,13 @@ const EquipmentModel = mongoose.model('Equipment');
 
 const update = async (req, res) => {
   try {
-    const { equipments = [] } = req.body;
+    const { contacts = [], equipments = [] } = req.body;
 
     let body = req.body;
     let equipment_IDs = [];
+    
+    body['equipmentCount'] = equipments.length;
+    body['primaryContact'] = contacts.length > 0 ? contacts[0].name : "";
 
     for (let i = 0; i < equipments.length; i++) {
       let equipment = equipments[i];

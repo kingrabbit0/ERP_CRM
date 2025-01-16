@@ -46,12 +46,18 @@ const customerSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         unique: true,
-      },  
-    }
+      },
+    },
   ],
-  equipments: [
-    { type: mongoose.Schema.ObjectId, ref: 'Equipment', required: true }
-  ],
+  equipments: [{ type: mongoose.Schema.ObjectId, ref: 'Equipment', required: true }],
+  equipmentCount: {
+    type: Number,
+    default: 0,
+  },
+  primaryContact: {
+    type: String,
+    default: '',
+  },
   created: {
     type: Date,
     default: Date.now,

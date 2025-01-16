@@ -12,13 +12,15 @@ const create = async (req, res) => {
 
     body['contacts'] = contacts;
     body['equipments'] = []; 
+    body['equipmentCount'] = equipments.length;
+    body['primaryContact'] = contacts.length > 0 ? contacts[0].name : "";
     body['createdBy'] = req.admin._id;
 
     // Creating a new document in the collection
     const result = await new Model(body).save();
 
     //  Updating the equipments list by id array
-    for (let i = 0; i < equipments.lenght; i++) {
+    for (let i = 0; i < equipments.length; i++) {
       let equipment = equipments[i];
       equipment['lastDate'] = equipment['nextDate'];
       equipment['createdBy'] = result._id;
