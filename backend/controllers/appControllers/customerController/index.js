@@ -1,10 +1,15 @@
 const createCRUDController = require('@/controllers/middlewaresControllers/createCRUDController');
 const methods = createCRUDController('Customer');
 
-const remove = require('./remove');
-const summary = require('./summary');
+const create = require('./create');
+const update = require('./update');
+const paginatedList = require('./paginatedList');
+const read = require('./read');
 
-methods.delete = remove;
-methods.summary = summary;
+methods.list = paginatedList;
+methods.read = read;
+
+methods.create = create;
+methods.update = update;
 
 module.exports = methods;

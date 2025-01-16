@@ -10,47 +10,32 @@ const equipmentSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  id: {
-    type: Number,
-    required: true,
-  },
-  customer_id: {
-    type: Number,
-    required: true,
-  },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Customer', required: true },
   name: {
     type: String,
     trim: true,
     required: true,
   },
-  serial_number: {
+  serial: {
     type: String,
     trim: true,
     required: true,
   },
-  calibration_interval: {
-    type: String,
+  interval: {
+    type: number,
     trim: true,
     required: true,
   },
-  last_calibration_date: {
-    type: String,
-    trim: true,
+  lastDate: {
+    type: Date,
+    default: Date.now,
+  },
+  nextDate: {
+    type: Date,
     required: true,
   },
-  next_calibration_date: {
+  contact: {
     type: String,
-    trim: true,
-    required: true,
-  },
-  contact_id: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  status: {
-    type: String,
-    trim: true,
     required: true,
   },
   created: {
@@ -60,7 +45,7 @@ const equipmentSchema = new mongoose.Schema({
   updated: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
 module.exports = mongoose.model('Equipment', equipmentSchema);

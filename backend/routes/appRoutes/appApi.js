@@ -30,6 +30,7 @@ const kycController = require('@/controllers/appControllers/kycController');
 const inventoryController = require('@/controllers/appControllers/inventoryController');
 
 const customerController = require('@/controllers/appControllers/customerController');
+const equipmentController = require('@/controllers/appControllers/equipmentController');
 
 // //_________________________________ API for employees_____________________
 router
@@ -358,5 +359,30 @@ router.route('/client/search').get(hasPermission('read'), catchErrors(clientCont
 router.route('/client/list').get(hasPermission('read'), catchErrors(clientController.list));
 router.route('/client/filter').get(hasPermission('read'), catchErrors(clientController.filter));
 router.route('/client/summary').get(hasPermission('read'), catchErrors(clientController.summary));
+
+
+// //_________________________________________________________________API for Customers_____________________
+
+router.route('/quote/create').post(hasPermission('create'), catchErrors(customerController.create));
+router.route('/quote/read/:id').get(hasPermission('read'), catchErrors(customerController.read));
+router
+  .route('/quote/update/:id')
+  .patch(hasPermission('update'), catchErrors(customerController.update));
+router
+  .route('/quote/delete/:id')
+  .delete(hasPermission('delete'), catchErrors(customerController.delete));
+router.route('/quote/list').get(hasPermission('read'), catchErrors(customerController.list));
+
+// //_________________________________________________________________API for Equipments_____________________
+
+router.route('/quote/create').post(hasPermission('create'), catchErrors(customerController.create));
+router.route('/quote/read/:id').get(hasPermission('read'), catchErrors(customerController.read));
+router
+  .route('/quote/update/:id')
+  .patch(hasPermission('update'), catchErrors(customerController.update));
+router
+  .route('/quote/delete/:id')
+  .delete(hasPermission('delete'), catchErrors(customerController.delete));
+router.route('/quote/list').get(hasPermission('read'), catchErrors(customerController.list));
 
 module.exports = router;

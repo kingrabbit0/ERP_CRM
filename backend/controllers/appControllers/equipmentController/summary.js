@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
 
-const Model = mongoose.model('Equipment');
+const Model = mongoose.model('Client');
 const QuoteModel = mongoose.model('Quote');
 const InvoiceModel = mongoose.model('Invoice');
 

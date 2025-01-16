@@ -10,10 +10,7 @@ const customerSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  id: {
-    type: Number,
-    required: true,
-  },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin', required: true },
   name: {
     type: String,
     trim: true,
@@ -33,6 +30,28 @@ const customerSchema = new mongoose.Schema({
     lowercase: true,
     unique: true,
   },
+  contacts: [
+    {
+      name: {
+        type: String,
+        trim: true,
+        required: true,
+      },
+      address: {
+        type: String,
+        required: true,
+      },
+      email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        unique: true,
+      },  
+    }
+  ],
+  equipments: [
+    { type: mongoose.Schema.ObjectId, ref: 'Equipment', required: true }
+  ],
   created: {
     type: Date,
     default: Date.now,
