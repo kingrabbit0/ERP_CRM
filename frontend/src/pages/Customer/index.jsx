@@ -1,7 +1,7 @@
-import CrudModule from '@/modules/CrudModule/CrudModule';
-import CustomerForm from '@/forms/CustomerForm';
+import dayjs from 'dayjs';
+import { Tag } from 'antd';
 
-import { Button } from 'antd';
+import CustomerDataTableModule from '@/modules/CustomerModule/CustomerDataTableModule';
 import useLanguage from '@/locale/useLanguage';
 
 export default function Customer() {
@@ -9,39 +9,14 @@ export default function Customer() {
   const entity = 'customer';
 
   const searchConfig = {
-    displayLabels: ['customer'],
-    searchFields: 'customer,customerName',
-    outputValue: '_id',
+    displayLabels: ['name', 'surname'],
+    searchFields: 'name,surname,birthday',
   };
-
-  const entityDisplayLabels = ['customer'];
-
-  const readColumns = [
-    {
-      title: translate('Company'),
-      dataIndex: 'company',
-    },
-    {
-      title: translate('Manager first name'),
-      dataIndex: 'managerName',
-    },
-    {
-      title: translate('Manager last name'),
-      dataIndex: 'managerSurname',
-    },
-    {
-      title: translate('Email'),
-      dataIndex: 'email',
-    },
-    {
-      title: translate('Phone'),
-      dataIndex: 'phone',
-    },
-  ];
+  const entityDisplayLabels = ['number', 'client.company'];
   const dataTableColumns = [
     {
       title: translate('Customer Name'),
-      dataIndex: 'customer',
+      dataIndex: 'name',
     },
     {
       title: translate('Equipment Count'),
@@ -71,17 +46,9 @@ export default function Customer() {
   };
   const config = {
     ...configPage,
-    readColumns,
     dataTableColumns,
     searchConfig,
     entityDisplayLabels,
   };
-
-  return (
-    <CrudModule
-      createForm={<CustomerForm />}
-      updateForm={<CustomerForm isUpdateForm={true} />}
-      config={config}
-    />
-  );
+  return <CustomerDataTableModule config={config} />;
 }

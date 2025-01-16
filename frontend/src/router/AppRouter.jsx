@@ -7,7 +7,10 @@ const Logout = lazy(() => import('@/pages/Logout.jsx'));
 const NotFound = lazy(() => import('@/pages/NotFound.jsx'));
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
-const Customer = lazy(() => import('@/pages/Customer'));
+const Customer = lazy(() => import('@/pages/Customer/index'));
+const CustomerCreate = lazy(() => import('@/pages/Customer/CustomerCreate'));
+const CustomerRead = lazy(() => import('@/pages/Customer/CustomerRead'));
+const CustomerUpdate = lazy(() => import('@/pages/Customer/CustomerUpdate'));
 const Equipment = lazy(() => import('@/pages/Equipment'));
 const Notification = lazy(() => import('@/pages/Notification'));
 const Inventory = lazy(() => import('@/pages/Inventory'));
@@ -54,14 +57,6 @@ export default function AppRouter() {
     {
       path: '/',
       element: <Dashboard />,
-    },
-    {
-      path: '/customer',
-      element: <Customer />,
-    },
-    {
-      path: '/equipment',
-      element: <Equipment />,
     },
     {
       path: '/notification',
@@ -186,6 +181,26 @@ export default function AppRouter() {
     {
       path: '*',
       element: <NotFound />,
+    },
+    {
+      path: '/customer',
+      element: <Customer />,
+    },
+    {
+      path: '/customer/create',
+      element: <CustomerCreate />,
+    },
+    {
+      path: '/customer/read/:id',
+      element: <CustomerRead />,
+    },
+    {
+      path: '/customer/update/:id',
+      element: <CustomerUpdate />,
+    },
+    {
+      path: '/equipment',
+      element: <Equipment />,
     },
   ]);
 
