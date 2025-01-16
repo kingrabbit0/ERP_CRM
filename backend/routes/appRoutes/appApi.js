@@ -360,29 +360,34 @@ router.route('/client/list').get(hasPermission('read'), catchErrors(clientContro
 router.route('/client/filter').get(hasPermission('read'), catchErrors(clientController.filter));
 router.route('/client/summary').get(hasPermission('read'), catchErrors(clientController.summary));
 
-
 // //_________________________________________________________________API for Customers_____________________
 
-router.route('/quote/create').post(hasPermission('create'), catchErrors(customerController.create));
-router.route('/quote/read/:id').get(hasPermission('read'), catchErrors(customerController.read));
 router
-  .route('/quote/update/:id')
+  .route('/customer/create')
+  .post(hasPermission('create'), catchErrors(customerController.create));
+router.route('/customer/read/:id').get(hasPermission('read'), catchErrors(customerController.read));
+router
+  .route('/customer/update/:id')
   .patch(hasPermission('update'), catchErrors(customerController.update));
 router
-  .route('/quote/delete/:id')
+  .route('/customer/delete/:id')
   .delete(hasPermission('delete'), catchErrors(customerController.delete));
-router.route('/quote/list').get(hasPermission('read'), catchErrors(customerController.list));
+router.route('/customer/list').get(hasPermission('read'), catchErrors(customerController.list));
 
 // //_________________________________________________________________API for Equipments_____________________
 
-router.route('/quote/create').post(hasPermission('create'), catchErrors(customerController.create));
-router.route('/quote/read/:id').get(hasPermission('read'), catchErrors(customerController.read));
 router
-  .route('/quote/update/:id')
-  .patch(hasPermission('update'), catchErrors(customerController.update));
+  .route('/equipment/create')
+  .post(hasPermission('create'), catchErrors(equipmentController.create));
 router
-  .route('/quote/delete/:id')
-  .delete(hasPermission('delete'), catchErrors(customerController.delete));
-router.route('/quote/list').get(hasPermission('read'), catchErrors(customerController.list));
+  .route('/equipment/read/:id')
+  .get(hasPermission('read'), catchErrors(equipmentController.read));
+router
+  .route('/equipment/update/:id')
+  .patch(hasPermission('update'), catchErrors(equipmentController.update));
+router
+  .route('/equipment/delete/:id')
+  .delete(hasPermission('delete'), catchErrors(equipmentController.delete));
+router.route('/equipment/list').get(hasPermission('read'), catchErrors(equipmentController.list));
 
 module.exports = router;

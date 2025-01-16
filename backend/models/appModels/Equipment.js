@@ -22,7 +22,7 @@ const equipmentSchema = new mongoose.Schema({
     required: true,
   },
   interval: {
-    type: number,
+    type: Number,
     trim: true,
     required: true,
   },
