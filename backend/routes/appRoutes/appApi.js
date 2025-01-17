@@ -31,6 +31,7 @@ const inventoryController = require('@/controllers/appControllers/inventoryContr
 
 const customerController = require('@/controllers/appControllers/customerController');
 const equipmentController = require('@/controllers/appControllers/equipmentController');
+const userManagementController = require('@/controllers/appControllers/userManagementController');
 
 // //_________________________________ API for employees_____________________
 router
@@ -390,5 +391,21 @@ router
   .route('/equipment/delete/:id')
   .delete(hasPermission('delete'), catchErrors(equipmentController.delete));
 router.route('/equipment/list').get(hasPermission('read'), catchErrors(equipmentController.list));
+
+// //_________________________________________________________________API for User Management_____________________
+
+router
+  .route('/user/create')
+  .post(hasPermission('create'), catchErrors(userManagementController.create));
+router
+  .route('/user/read/:id')
+  .get(hasPermission('read'), catchErrors(userManagementController.read));
+router
+  .route('/user/update/:id')
+  .patch(hasPermission('update'), catchErrors(userManagementController.update));
+router
+  .route('/user/delete/:id')
+  .delete(hasPermission('delete'), catchErrors(userManagementController.delete));
+router.route('/user/list').get(hasPermission('read'), catchErrors(userManagementController.list));
 
 module.exports = router;

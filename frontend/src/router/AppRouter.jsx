@@ -13,6 +13,7 @@ const CustomerRead = lazy(() => import('@/pages/Customer/CustomerRead'));
 const CustomerUpdate = lazy(() => import('@/pages/Customer/CustomerUpdate'));
 const Equipment = lazy(() => import('@/pages/Equipment'));
 const Notification = lazy(() => import('@/pages/Notification'));
+const UserManagement = lazy(() => import('@/pages/UserManagement'));
 const Inventory = lazy(() => import('@/pages/Inventory'));
 const Order = lazy(() => import('@/pages/Order'));
 const Invoice = lazy(() => import('@/pages/Invoice'));
@@ -201,6 +202,10 @@ export default function AppRouter() {
     {
       path: '/equipment',
       element: <Equipment />,
+    },
+    {
+      path: '/user',
+      element: <UserManagement />,
     },
   ]);
 

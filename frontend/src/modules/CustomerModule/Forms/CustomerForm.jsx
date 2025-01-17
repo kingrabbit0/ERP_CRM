@@ -90,7 +90,7 @@ const EquipmentItemRow = ({ field, remove }) => {
       </Col>
       <Col className="gutter-row" span={5}>
         <Form.Item
-          name={[field.name, 'Interval']}
+          name={[field.name, 'interval']}
           rules={[
             {
               required: true,
@@ -109,7 +109,7 @@ const EquipmentItemRow = ({ field, remove }) => {
       </Col>
       <Col className="gutter-row" span={5}>
         <Form.Item
-          name="date"
+          name={[field.name, 'nextDate']}
           rules={[
             {
               required: true,

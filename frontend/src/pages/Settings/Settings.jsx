@@ -4,12 +4,14 @@ import {
   // CreditCardOutlined,
   // DollarOutlined,
   // FileImageOutlined,
+  AlertOutlined,
 } from '@ant-design/icons';
 
 import TabsContent from '@/components/TabsContent/TabsContent';
 
 // import CompanyLogoSettings from './CompanyLogoSettings';
 import GeneralSettings from './GeneralSettings';
+import NotificationSettings from './NotificationSettings';
 // import PaymentSettings from './PaymentSettings';
 // import InvoiceSettings from './InvoiceSettings';
 // import MoneyFormatSettings from './MoneyFormatSettings';
@@ -25,9 +27,9 @@ export default function Settings() {
       children: <GeneralSettings />,
     },
     {
-      label: translate('General Settings'),
-      icon: <SettingOutlined />,
-      children: <GeneralSettings />,
+      label: translate('Notification Settings'),
+      icon: <AlertOutlined />,
+      children: <NotificationSettings />,
     },
     // {
     //   label: translate('Company Logo'),

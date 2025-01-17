@@ -23,7 +23,6 @@ const equipmentSchema = new mongoose.Schema({
   },
   interval: {
     type: Number,
-    trim: true,
     required: true,
   },
   lastDate: {

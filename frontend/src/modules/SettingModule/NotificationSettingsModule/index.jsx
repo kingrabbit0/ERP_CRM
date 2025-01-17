@@ -4,13 +4,13 @@ import UpdateSettingModule from '../components/UpdateSettingModule';
 import CalibrationSettingForm from './forms/CalibrationSettingForm';
 import useLanguage from '@/locale/useLanguage';
 
-export default function GeneralSettingsModule({ config }) {
+export default function NotificationSettingsModule({ config }) {
   const translate = useLanguage();
   return (
     <UpdateSettingModule config={config}>
       <SetingsSection
-      title={translate('Interval')}
-      description={translate('Update interval setting')}
+      title={translate('Notification')}
+      description={translate('Update notification setting')}
       >
         <CalibrationSettingForm />
       </SetingsSection>

@@ -10,10 +10,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  id: {
-    type: Number,
-    required: true,
-  },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin', required: true },
   name: {
     type: String,
     trim: true,

@@ -1,15 +1,15 @@
 import { Form, Input, Select } from 'antd';
 
-// import languages from '@/locale/languages';
+import languages from '@/locale/languages';
 import useLanguage from '@/locale/useLanguage';
 
-export default function CalibrationSettingForm() {
+export default function GeneralSettingForm() {
   const translate = useLanguage();
   return (
     <>
       <Form.Item
-        label={translate('interval')}
-        name="interval"
+        label={translate('Company Name')}
+        name="company_name"
         rules={[
           {
             required: true,
@@ -18,7 +18,7 @@ export default function CalibrationSettingForm() {
       >
         <Input autoComplete="off" />
       </Form.Item>
-      {/* <Form.Item
+      <Form.Item
         label={translate('language')}
         name="language"
         rules={[
@@ -51,7 +51,7 @@ export default function CalibrationSettingForm() {
             </Select.Option>
           ))}
         </Select>
-      </Form.Item> */}
+      </Form.Item>
     </>
   );
 }

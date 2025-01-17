@@ -63,11 +63,11 @@ export default function DataTable({ config, extra = [] }) {
       key: 'edit',
       icon: <EditOutlined />,
     },
-    {
-      label: translate('Download'),
-      key: 'download',
-      icon: <FilePdfOutlined />,
-    },
+    // {
+    //   label: translate('Download'),
+    //   key: 'download',
+    //   icon: <FilePdfOutlined />,
+    // },
     ...extra,
     {
       type: 'divider',

@@ -19,7 +19,7 @@ import {
   // UserOutlined,
   // CreditCardOutlined,
   MenuOutlined,
-  // UserAddOutlined,
+  UserAddOutlined,
   // FileOutlined,
   DesktopOutlined,
   NotificationOutlined,
@@ -56,11 +56,11 @@ function Sidebar({ collapsible }) {
       icon: <DashboardOutlined />,
       label: <Link to={'/'}>{translate('dashboard')}</Link>,
     },
-    // {
-    //   key: 'lead',
-    //   icon: <UserAddOutlined />,
-    //   label: <Link to={'/lead'}>{translate('lead')}</Link>,
-    // },
+    {
+      key: 'lead',
+      icon: <UserAddOutlined />,
+      label: <Link to={'/lead'}>{translate('lead')}</Link>,
+    },
     // {
     //   key: 'offer',
     //   icon: <FileOutlined />,
@@ -122,6 +122,10 @@ function Sidebar({ collapsible }) {
           key: 'emailTemplates',
           label: <Link to={'/email'}>{translate('email_templates')}</Link>,
         },
+        {
+          key: 'usermanagement',
+          label: <Link to={'/user'}>{translate('user_management')}</Link>,
+        },
         // {
         //   key: 'paymentMode',
         //   label: <Link to={'/payment/mode'}>{translate('payment_mode')}</Link>,
@@ -130,10 +134,10 @@ function Sidebar({ collapsible }) {
         //   key: 'taxes',
         //   label: <Link to={'/taxes'}>{translate('taxes')}</Link>,
         // },
-        {
-          key: 'advancedSettings',
-          label: <Link to={'/settings/advanced'}>{translate('advanced_settings')}</Link>,
-        },
+        // {
+        //   key: 'advancedSettings',
+        //   label: <Link to={'/settings/advanced'}>{translate('advanced_settings')}</Link>,
+        // },
       ],
     },
   ];
