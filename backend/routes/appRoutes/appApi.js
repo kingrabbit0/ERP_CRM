@@ -373,6 +373,7 @@ router
   .route('/customer/delete/:id')
   .delete(hasPermission('delete'), catchErrors(customerController.delete));
 router.route('/customer/list').get(hasPermission('read'), catchErrors(customerController.list));
+router.route('/customer/listAll').get(hasPermission('read'), catchErrors(customerController.listAll));
 
 // //_________________________________________________________________API for Equipments_____________________
 

@@ -37,15 +37,15 @@ const customerSchema = new mongoose.Schema({
         trim: true,
         required: true,
       },
-      address: {
-        type: String,
-        required: true,
-      },
       email: {
         type: String,
         trim: true,
         lowercase: true,
         unique: true,
+      },
+      phone: {
+        type: String,
+        required: true,
       },
     },
   ],
