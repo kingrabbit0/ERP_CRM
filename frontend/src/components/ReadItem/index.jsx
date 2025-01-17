@@ -17,10 +17,11 @@ export default function ReadItem({ config }) {
 
   const isFirstRun = useRef(true);
   useEffect(() => {
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
-      return;
-    }
+    // if (isFirstRun.current) {
+    //   isFirstRun.current = false;
+    //   return;
+    // }
+
     const list = [];
     readColumns.map((props) => {
       const propsKey = props.dataIndex;

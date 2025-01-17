@@ -120,7 +120,7 @@ function CrudModule({ config, createForm, updateForm, withUpload = false }) {
   return (
     <CrudLayout
       config={config}
-      fixHeaderPanel={<FixHeaderPanel config={config} />}
+      // fixHeaderPanel={<FixHeaderPanel config={config} />}
       sidePanelBottomContent={
         <CreateForm config={config} formElements={createForm} withUpload={withUpload} />
       }

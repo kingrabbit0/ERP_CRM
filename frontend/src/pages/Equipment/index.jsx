@@ -1,12 +1,11 @@
 import CrudModule from '@/modules/CrudModule/CrudModule';
 import EquipmentForm from '@/forms/EquipmentForm';
 
-import { Button } from 'antd';
 import useLanguage from '@/locale/useLanguage';
 
 export default function Equipment() {
   const translate = useLanguage();
-  const entity = 'client';
+  const entity = 'equipment';
 
   const searchConfig = {
     displayLabels: ['equipment'],
@@ -18,26 +17,32 @@ export default function Equipment() {
 
   const readColumns = [
     {
-      title: translate('Company'),
-      dataIndex: 'company',
+      title: translate('Equipment Name'),
+      dataIndex: 'name',
     },
     {
-      title: translate('Manager first name'),
-      dataIndex: 'managerName',
+      title: translate('Serial Number'),
+      dataIndex: 'serial',
     },
     {
-      title: translate('Manager last name'),
-      dataIndex: 'managerSurname',
+      title: translate('Customer'),
+      dataIndex: 'createdBy.name',
     },
     {
-      title: translate('Email'),
-      dataIndex: 'email',
+      title: translate('Interval'),
+      dataIndex: 'interval',
     },
     {
-      title: translate('Phone'),
-      dataIndex: 'phone',
+      title: translate('Calibration Next Date'),
+      dataIndex: 'nextDate',
+      isDate: true,
+    },
+    {
+      title: translate('Contact Person'),
+      dataIndex: 'contact',
     },
   ];
+
   const dataTableColumns = [
     {
       title: translate('Equipment Name'),
@@ -45,47 +50,23 @@ export default function Equipment() {
     },
     {
       title: translate('Serial Number'),
-      dataIndex: 'serialNumber',
+      dataIndex: 'serial',
     },
     {
       title: translate('Customer Name'),
-      dataIndex: 'customerName',
+      dataIndex: ['createdBy', 'name'],
     },
     {
       title: translate('Calibration Interval'),
-      dataIndex: 'calibrationInterval',
+      dataIndex: 'interval',
     },
     {
       title: translate('Calibration Next Date'),
-      dataIndex: 'calibrationNextDate',
+      dataIndex: 'nextDate',
     },
     {
       title: translate('Contact Person'),
-      dataIndex: 'assignedPerson',
-    },
-    {
-      title: translate('Edit'),
-      onCell: () => {
-        return {
-          props: {
-            style: {
-              width: '60px',
-            },
-          },
-        };
-      },
-      render: () => {
-        return (
-          <Button
-            color={'primary'}
-            variant={'solid'}
-            disabled={false}
-            onClick={() => {
-              console.log('onClick button');
-            }}
-          />
-        );
-      },
+      dataIndex: 'contact',
     },
   ];
 

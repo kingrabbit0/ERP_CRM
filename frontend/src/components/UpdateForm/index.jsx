@@ -75,6 +75,19 @@ export default function UpdateForm({ config, formElements, withUpload = false })
           updated: dayjs(newValues['updated']),
         };
       }
+      //
+      if (newValues.nextDate) {
+        newValues = {
+          ...newValues,
+          nextDate: dayjs(newValues['nextDate']),
+        };
+      }
+      if (newValues.createdBy) {
+        newValues = {
+          ...newValues,
+          createdBy: newValues['createdBy']._id,
+        };
+      }
 
       form.setFieldsValue(newValues);
     }

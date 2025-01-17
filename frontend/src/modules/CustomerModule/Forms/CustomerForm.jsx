@@ -11,7 +11,7 @@ import useLanguage from '@/locale/useLanguage';
 const ContatItemRow = ({ field, remove }) => {
   return (
     <Row gutter={[12, 12]} style={{ position: 'relative' }}>
-      <Col className="gutter-row" span={5}>
+      <Col className="gutter-row" span={6}>
         <Form.Item
           name={[field.name, 'name']}
           rules={[
@@ -24,7 +24,7 @@ const ContatItemRow = ({ field, remove }) => {
           <Input placeholder="James" />
         </Form.Item>
       </Col>
-      <Col className="gutter-row" span={7}>
+      <Col className="gutter-row" span={8}>
         <Form.Item
           name={[field.name, 'email']}
           rules={[
@@ -37,7 +37,7 @@ const ContatItemRow = ({ field, remove }) => {
           <Input placeholder="example@gmail.com" />
         </Form.Item>
       </Col>
-      <Col className="gutter-row" span={7}>
+      <Col className="gutter-row" span={5}>
         <Form.Item
           name={[field.name, 'phone']}
           rules={[

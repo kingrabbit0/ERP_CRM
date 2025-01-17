@@ -1,8 +1,8 @@
 import NotFound from '@/components/NotFound';
 
 import { ErpLayout } from '@/layout';
-import UpdateItem from '@/modules/ErpPanelModule/UpdateItem';
-import QuoteForm from '@/modules/QuoteModule/Forms/QuoteForm';
+import CustomerUpdateItem from '@/modules/ErpPanelModule/CustomerUpdateItem';
+import CustomerForm from '@/modules/CustomerModule/Forms/CustomerForm';
 
 import PageLoader from '@/components/PageLoader';
 
@@ -13,7 +13,7 @@ import { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
-export default function UpdateQuoteModule({ config }) {
+export default function UpdateCustomerModule({ config }) {
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -41,7 +41,7 @@ export default function UpdateQuoteModule({ config }) {
     return (
       <ErpLayout>
         {isSuccess ? (
-          <UpdateItem config={config} UpdateForm={QuoteForm} />
+          <CustomerUpdateItem config={config} UpdateForm={CustomerForm} />
         ) : (
           <NotFound entity={config.entity} />
         )}
