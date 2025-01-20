@@ -6,6 +6,7 @@ const methods = createCRUDController('Equipment');
 const paginatedList = require('./paginatedList');
 // const read = require('./read');
 // const allList = require('./all');
+const summary = require('./summary');
 
 methods.list = paginatedList;
 // methods.listAll = allList;
@@ -13,5 +14,6 @@ methods.list = paginatedList;
 
 // methods.create = create;
 // methods.update = update;
+methods.summary = summary;
 
 module.exports = methods;

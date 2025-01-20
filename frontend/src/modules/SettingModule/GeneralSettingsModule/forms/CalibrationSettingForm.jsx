@@ -1,10 +1,16 @@
-import { Form, Input, Select } from 'antd';
+import { Form, Select } from 'antd';
 
 // import languages from '@/locale/languages';
 import useLanguage from '@/locale/useLanguage';
 
 export default function CalibrationSettingForm() {
   const translate = useLanguage();
+  const intervalOptions = [
+    { label: '6 Months', value: '6' },
+    { label: '12 Months', value: '12' },
+    { label: '24 Months', value: '24' },
+    { label: '60 Months', value: '60' },
+  ];
   return (
     <>
       <Form.Item
@@ -16,7 +22,7 @@ export default function CalibrationSettingForm() {
           },
         ]}
       >
-        <Input autoComplete="off" />
+        <Select options={intervalOptions} />
       </Form.Item>
       {/* <Form.Item
         label={translate('language')}

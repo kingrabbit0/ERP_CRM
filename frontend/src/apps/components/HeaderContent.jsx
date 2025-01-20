@@ -73,15 +73,15 @@ export default function HeaderContent() {
     {
       type: 'divider',
     },
-    {
-      icon: <SettingOutlined />,
-      key: 'settingProfile',
-      label: (
-        <Link to={'/profile'}>
-          <DropdownMenu text={translate('profile_settings')} />
-        </Link>
-      ),
-    },
+    // {
+    //   icon: <SettingOutlined />,
+    //   key: 'settingProfile',
+    //   label: (
+    //     <Link to={'/profile'}>
+    //       <DropdownMenu text={translate('profile_settings')} />
+    //     </Link>
+    //   ),
+    // },
     {
       icon: <SettingOutlined />,
       key: 'settingApp',

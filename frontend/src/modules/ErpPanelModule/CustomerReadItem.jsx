@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Divider } from 'antd';
+import dayjs from 'dayjs';
 
-import { Button, Row, Col, Descriptions, Statistic, Tag } from 'antd';
+import { Button, Row, Col, Descriptions, Statistic } from 'antd';
 import { PageHeader } from '@ant-design/pro-layout';
 import { EditOutlined, CloseCircleOutlined } from '@ant-design/icons';
 
@@ -78,7 +79,7 @@ const EquipmentItem = ({ item }) => {
             fontWeight: '700',
           }}
         >
-          {item.nextDate}
+          {dayjs(item.nextDate).format("DD/MM/YYYY")}
         </p>
       </Col>
       <Col className="gutter-row" span={5}>

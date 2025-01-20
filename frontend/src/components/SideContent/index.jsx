@@ -44,7 +44,7 @@ export default function SideContent() {
           </li>
         </ul>
         <Divider />
-        <div
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -102,7 +102,7 @@ export default function SideContent() {
               opacity: '0.8',
             }}
           />
-        </div>
+        </div> */}
       </div>
     </Content>
   );

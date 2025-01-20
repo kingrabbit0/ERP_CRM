@@ -2,6 +2,7 @@ import CrudModule from '@/modules/CrudModule/CrudModule';
 import EquipmentForm from '@/forms/EquipmentForm';
 
 import useLanguage from '@/locale/useLanguage';
+import dayjs from 'dayjs';
 
 export default function Equipment() {
   const translate = useLanguage();
@@ -63,6 +64,9 @@ export default function Equipment() {
     {
       title: translate('Calibration Next Date'),
       dataIndex: 'nextDate',
+      render: (nextDate) => {
+        return dayjs(nextDate).format('DD/MM/YYYY');
+      },
     },
     {
       title: translate('Contact Person'),

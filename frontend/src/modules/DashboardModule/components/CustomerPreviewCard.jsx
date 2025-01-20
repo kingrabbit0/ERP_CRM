@@ -37,7 +37,7 @@ export default function CustomerPreviewCard({
               <Statistic
                 title={translate('Active Customer')}
                 value={activeCustomer}
-                precision={2}
+                // precision={2}
                 valueStyle={
                   activeCustomer > 0
                     ? { color: '#3f8600' }
@@ -45,14 +45,14 @@ export default function CustomerPreviewCard({
                     ? { color: '#cf1322' }
                     : { color: '#000000' }
                 }
-                prefix={
-                  activeCustomer > 0 ? (
-                    <ArrowUpOutlined />
-                  ) : activeCustomer < 0 ? (
-                    <ArrowDownOutlined />
-                  ) : null
-                }
-                suffix="%"
+                // prefix={
+                //   activeCustomer > 0 ? (
+                //     <ArrowUpOutlined />
+                //   ) : activeCustomer < 0 ? (
+                //     <ArrowDownOutlined />
+                //   ) : null
+                // }
+                suffix="persons"
               />
             </div>
           )}

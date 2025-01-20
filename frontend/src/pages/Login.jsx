@@ -42,7 +42,7 @@ const LoginPage = () => {
             padding: '10px 20px',
           }}
         >
-          <SelectLanguage />
+          {/* <SelectLanguage /> */}
         </Content>
         <Content
           style={{

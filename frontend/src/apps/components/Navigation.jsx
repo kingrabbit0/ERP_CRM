@@ -19,7 +19,7 @@ import {
   // UserOutlined,
   // CreditCardOutlined,
   MenuOutlined,
-  UserAddOutlined,
+  // UserAddOutlined,
   // FileOutlined,
   DesktopOutlined,
   NotificationOutlined,
@@ -56,11 +56,11 @@ function Sidebar({ collapsible }) {
       icon: <DashboardOutlined />,
       label: <Link to={'/'}>{translate('dashboard')}</Link>,
     },
-    {
-      key: 'lead',
-      icon: <UserAddOutlined />,
-      label: <Link to={'/lead'}>{translate('lead')}</Link>,
-    },
+    // {
+    //   key: 'lead',
+    //   icon: <UserAddOutlined />,
+    //   label: <Link to={'/lead'}>{translate('lead')}</Link>,
+    // },
     // {
     //   key: 'offer',
     //   icon: <FileOutlined />,
@@ -122,10 +122,10 @@ function Sidebar({ collapsible }) {
           key: 'emailTemplates',
           label: <Link to={'/email'}>{translate('email_templates')}</Link>,
         },
-        {
-          key: 'usermanagement',
-          label: <Link to={'/user'}>{translate('user_management')}</Link>,
-        },
+        // {
+        //   key: 'usermanagement',
+        //   label: <Link to={'/user'}>{translate('user_management')}</Link>,
+        // },
         // {
         //   key: 'paymentMode',
         //   label: <Link to={'/payment/mode'}>{translate('payment_mode')}</Link>,
@@ -180,13 +180,15 @@ function Sidebar({ collapsible }) {
       theme={'light'}
     >
       <div className="logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-        <img src={logoIcon} alt="Logo" style={{ height: '32px' }} />
+        {
+          showLogoApp && <img src={logoIcon} alt="Logo" style={{ height: '32px' }} />
+        }
 
         {!showLogoApp && (
           <img
             src={logoText}
             alt="Logo"
-            style={{ marginTop: '3px', marginLeft: '10px', height: '29px' }}
+            style={{ marginTop: '3px', marginLeft: '10px', height: '50px' }}
           />
         )}
       </div>

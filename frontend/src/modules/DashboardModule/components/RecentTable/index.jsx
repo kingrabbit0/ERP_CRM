@@ -13,7 +13,7 @@ import useResponsiveTable from '@/hooks/useResponsiveTable';
 
 export default function RecentTable({ ...props }) {
   const translate = useLanguage();
-  let { entity, dataTableColumns, sampletDataSource } = props;
+  let { entity, dataTableColumns } = props;
 
   const items = [
     {
@@ -50,40 +50,40 @@ export default function RecentTable({ ...props }) {
 
   dataTableColumns = [
     ...dataTableColumns,
-    {
-      title: '',
-      key: 'action',
-      render: (_, record) => (
-        <Dropdown
-          menu={{
-            items,
-            onClick: ({ key }) => {
-              switch (key) {
-                case 'read':
-                  handleRead(record);
-                  break;
-                case 'edit':
-                  handleEdit(record);
-                  break;
-                case 'download':
-                  handleDownload(record);
-                  break;
+    // {
+    //   title: '',
+    //   key: 'action',
+    //   render: (_, record) => (
+    //     <Dropdown
+    //       menu={{
+    //         items,
+    //         onClick: ({ key }) => {
+    //           switch (key) {
+    //             case 'read':
+    //               handleRead(record);
+    //               break;
+    //             case 'edit':
+    //               handleEdit(record);
+    //               break;
+    //             case 'download':
+    //               handleDownload(record);
+    //               break;
 
-                default:
-                  break;
-              }
-              // else if (key === '2')handleCloseTask
-            },
-          }}
-          trigger={['click']}
-        >
-          <EllipsisOutlined
-            style={{ cursor: 'pointer', fontSize: '24px' }}
-            onClick={(e) => e.preventDefault()}
-          />
-        </Dropdown>
-      ),
-    },
+    //             default:
+    //               break;
+    //           }
+    //           // else if (key === '2')handleCloseTask
+    //         },
+    //       }}
+    //       trigger={['click']}
+    //     >
+    //       <EllipsisOutlined
+    //         style={{ cursor: 'pointer', fontSize: '24px' }}
+    //         onClick={(e) => e.preventDefault()}
+    //       />
+    //     </Dropdown>
+    //   ),
+    // },
   ];
 
   const asyncList = () => {
@@ -92,8 +92,7 @@ export default function RecentTable({ ...props }) {
   const { result, isLoading, isSuccess } = useFetch(asyncList);
   const firstFiveItems = () => {
     if (isSuccess && result) return result.slice(0, 5);
-    return sampletDataSource.slice(0, 5);
-    // return [];
+    return [];
   };
 
   const { expandedRowData, tableColumns, tableHeader } = useResponsiveTable(

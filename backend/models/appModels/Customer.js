@@ -28,7 +28,6 @@ const customerSchema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
-    unique: true,
   },
   contacts: [
     {
@@ -41,7 +40,6 @@ const customerSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        unique: true,
       },
       phone: {
         type: String,

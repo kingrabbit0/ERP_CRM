@@ -1,5 +1,6 @@
 import { Tag, Row, Col } from 'antd';
 import useLanguage from '@/locale/useLanguage';
+import dayjs from 'dayjs';
 
 import LogTable from './components/LogTable';
 
@@ -8,22 +9,25 @@ export default function NotificationModule() {
 
   const upcomingTableColumns = [
     {
+      title: translate('schedule'),
+      dataIndex: ['date'],
+      render: (date) => {
+        return dayjs(date).format('DD/MM/YYYY');
+      },
+    },
+    {
       title: translate('customer_name'),
-      dataIndex: 'customer_name',
+      dataIndex: ['equipment', 'createdBy', 'name'],
     },
     {
       title: translate('equipment_name'),
-      dataIndex: ['equipment'],
-    },
-    {
-      title: translate('schedule'),
-      dataIndex: ['equipment', 'schedule'],
+      dataIndex: ['equipment', 'name'],
     },
     {
       title: translate('Status'),
       dataIndex: 'status',
       render: (status) => {
-        let color = status === 'Pending' ? 'volcano' : 'green';
+        let color = status === 'pending' ? 'green' : 'volcano';
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
@@ -34,6 +38,9 @@ export default function NotificationModule() {
     {
       title: translate('notification_date'),
       dataIndex: 'date',
+      render: (date) => {
+        return dayjs(date).format('DD/MM/YYYY');
+      },
     },
     {
       title: translate('notifictioin_type'),
@@ -41,21 +48,21 @@ export default function NotificationModule() {
     },
     {
       title: translate('customer'),
-      dataIndex: 'customer',
+      dataIndex: ['equipment', 'createdBy', 'name'],
     },
     {
       title: translate('equipment'),
-      dataIndex: ['equipment'],
+      dataIndex: ['equipment', 'name'],
     },
     {
       title: translate('contact_person'),
-      dataIndex: ['contact'],
+      dataIndex: ['equipment', 'contact'],
     },
     {
       title: translate('Status'),
       dataIndex: 'status',
       render: (status) => {
-        let color = status === 'Pending' ? 'volcano' : status === 'Failed' ? 'black' : 'green';
+        let color = status === 'pending' ? 'green' : status === 'Failed' ? 'black' : 'volcano';
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
@@ -71,7 +78,7 @@ export default function NotificationModule() {
               {translate('Notification Logs')}
             </h3>
 
-            <LogTable entity={'invoice'} dataTableColumns={logTableColumns} />
+            <LogTable entity={'notification'} dataTableColumns={logTableColumns} />
           </div>
         </Col>
       </Row>
@@ -83,7 +90,7 @@ export default function NotificationModule() {
               {translate('Upcoming Calibrations')}
             </h3>
 
-            <LogTable entity={'invoice'} dataTableColumns={upcomingTableColumns} />
+            <LogTable entity={'upcoming'} dataTableColumns={upcomingTableColumns} />
           </div>
         </Col>
       </Row>

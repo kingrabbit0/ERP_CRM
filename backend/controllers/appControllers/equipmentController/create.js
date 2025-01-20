@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const notificationController = require('@/controllers/appControllers/notificationController');
 
 const Model = mongoose.model('Equipment');
 
@@ -8,7 +9,7 @@ const create = async (req, res) => {
 
     // Creating a new document in the collection
     const result = await new Model(body).save();
-
+    await notificationController.create(result);
     // const updateResult = await Model.findOneAndUpdate(
     //   { _id: result._id },
     //   { equipments: equipment_IDs },

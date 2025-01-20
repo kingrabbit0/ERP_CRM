@@ -39,6 +39,9 @@ async function setupApp() {
     const moneyFormatConfig = JSON.parse(
       fs.readFileSync(__dirname + '/config/moneyFormatConfig.json', 'utf-8')
     );
+    const generalConfig = JSON.parse(
+      fs.readFileSync(__dirname + '/config/generalConfig.json', 'utf-8')
+    );
 
     await Setting.insertMany([
       ...appConfig,
@@ -47,6 +50,7 @@ async function setupApp() {
       ...crmConfig,
       ...moneyFormatConfig,
       ...customConfig,
+      ...generalConfig,
     ]);
     console.log('👍 Settings created : Done!');
 

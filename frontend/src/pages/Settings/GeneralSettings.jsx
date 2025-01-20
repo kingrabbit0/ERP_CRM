@@ -19,7 +19,7 @@ export default function GeneralSettings() {
 
   const configPage = {
     entity,
-    settingsCategory: 'app_settings',
+    settingsCategory: 'general_settings',
     ...Labels,
   };
   return <GeneralSettingsModule config={configPage} />;

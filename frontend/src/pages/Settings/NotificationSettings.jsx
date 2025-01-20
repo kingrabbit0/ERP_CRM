@@ -19,7 +19,7 @@ export default function NotificationSettings() {
 
   const configPage = {
     entity,
-    settingsCategory: 'app_settings',
+    settingsCategory: 'general_settings',
     ...Labels,
   };
   return <NotificationSettingsModule config={configPage} />;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Model = mongoose.model('Equipment');
+const Model = mongoose.model('Notification');
 
 const paginatedList = async (req, res) => {
   const page = req.query.page || 1;
@@ -12,7 +12,13 @@ const paginatedList = async (req, res) => {
       .skip(skip)
       .limit(limit)
       .sort({ created: 'desc' })
-      .populate('createdBy', 'name');
+      .populate({
+        path: 'equipment',
+        populate: {
+          path: 'createdBy',
+          mode: 'Customer',
+        },
+      });
     // Counting the total documents
     const countPromise = Model.countDocuments({ removed: false });
     // Resolving both promises
@@ -25,7 +31,7 @@ const paginatedList = async (req, res) => {
     if (count > 0) {
       return res.status(200).json({
         success: true,
-        result: count,
+        result,
         pagination,
         message: 'Successfully found all documents',
       });

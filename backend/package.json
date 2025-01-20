@@ -17,6 +17,7 @@
     "codetool": "^3.0.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "cron": "^3.5.0",
     "crypto": "^1.0.1",
     "currency.js": "2.0.4",
     "dotenv": "4.0.0",

@@ -1,8 +1,6 @@
 import { Tag, Row, Col } from 'antd';
 import useLanguage from '@/locale/useLanguage';
 
-import { useMoney } from '@/settings';
-
 import { request } from '@/request';
 import useFetch from '@/hooks/useFetch';
 
@@ -10,71 +8,69 @@ import RecentTable from './components/RecentTable';
 
 import SummaryCard from './components/SummaryCard';
 import CustomerPreviewCard from './components/CustomerPreviewCard';
+import dayjs from 'dayjs';
 
 export default function DashboardModule() {
   const translate = useLanguage();
-  const { moneyFormatter } = useMoney();
-  const { result: invoiceResult, isLoading: invoiceLoading } = useFetch(() =>
-    request.summary({ entity: 'invoice' })
+  const { result: customerResult, isLoading: customerLoading } = useFetch(() =>
+    request.summary({ entity: 'customer' })
   );
 
-  const { result: quoteResult, isLoading: quoteLoading } = useFetch(() =>
-    request.summary({ entity: 'quote' })
+  const { result: equipmentResult, isLoading: equipmentLoading } = useFetch(() =>
+    request.summary({ entity: 'equipment' })
   );
 
-  const { result: offerResult, isLoading: offerLoading } = useFetch(() =>
-    request.summary({ entity: 'offer' })
-  );
-
-  // const { result: paymentResult, isLoading: paymentLoading } = useFetch(() =>
-  //   request.summary({ entity: 'payment' })
-  // );
-
-  const { result: clientResult, isLoading: clientLoading } = useFetch(() =>
-    request.summary({ entity: 'client' })
+  const { result: upcomingResult, isLoading: upcomingLoading } = useFetch(() =>
+    request.summary({ entity: 'upcoming' })
   );
 
   const notificationTableColumns = [
     {
       title: translate('contact_person'),
-      dataIndex: 'contact',
+      dataIndex: ['equipment', 'contact'],
     },
     {
       title: translate('equipment'),
-      dataIndex: 'equipment',
+      dataIndex: ['equipment', 'name'],
     },
     {
       title: translate('notification_date'),
-      dataIndex: 'timestamp',
+      dataIndex: 'date',
+      render: (date) => {
+        return dayjs(date).format('DD/MM/YYYY');
+      },
     },
   ];
 
   const upcomingTableColumns = [
     {
       title: translate('customer_name'),
-      dataIndex: 'customer',
+      dataIndex: ['equipment', 'createdBy', 'name'],
     },
     {
       title: translate('equipment_name'),
-      dataIndex: 'equipment',
+      dataIndex: ['equipment', 'name'],
     },
     {
       title: translate('serial_number'),
-      dataIndex: 'serial',
+      dataIndex: ['equipment', 'serial'],
     },
     {
       title: translate('calibration_due_date'),
-      dataIndex: 'due_date',
+      dataIndex: ['date'],
+      render: (date) => {
+        return dayjs(date).format('DD/MM/YYYY');
+      },
     },
     {
       title: translate('contact_person'),
-      dataIndex: 'contact',
+      dataIndex: ['equipment', 'contact'],
     },
     {
       title: translate('Status'),
       dataIndex: 'status',
       render: (status) => {
-        let color = status === 'Pending' ? 'volcano' : 'green';
+        let color = status === 'pending' ? 'green' : 'volcano';
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
@@ -83,28 +79,29 @@ export default function DashboardModule() {
 
   const entityData = [
     {
-      result: invoiceResult,
-      isLoading: invoiceLoading,
+      count: customerResult,
+      isLoading: customerLoading,
       entity: 'active_customer',
       prefix: 'active_customer',
     },
     {
-      result: quoteResult,
-      isLoading: quoteLoading,
+      count: equipmentResult,
+      isLoading: equipmentLoading,
       entity: 'equipment_total',
       prefix: 'equipment',
     },
     {
-      result: offerResult,
-      isLoading: offerLoading,
+      count: upcomingResult,
+      isLoading: upcomingLoading,
       entity: 'calibration_upcoming',
       prefix: 'calibration_upcoming',
     },
   ];
 
   const cards = entityData.map((data, index) => {
-    const { result, entity, isLoading, prefix } = data;
+    const { count, entity, isLoading, prefix } = data;
 
+    console.log('data =>', data);
     if (entity === 'offer') return null;
 
     return (
@@ -120,92 +117,11 @@ export default function DashboardModule() {
         }
         prefix={translate(prefix)}
         isLoading={isLoading}
-        tagContent={5}
+        tagContent={count}
         // tagContent={result?.total && moneyFormatter({ amount: result?.total })}
       />
     );
   });
-
-  const notificationDataSource = [
-    {
-      key: '1',
-      contact: 'Mike',
-      equipment: 'Guiter',
-      timestamp: '2015-03-25',
-    },
-    {
-      key: '2',
-      contact: 'John',
-      equipment: 'Guiter',
-      timestamp: '2015-03-25',
-    },
-    {
-      key: '3',
-      contact: 'Albert',
-      equipment: 'Guiter',
-      timestamp: '2015-03-25',
-    },
-    {
-      key: '4',
-      contact: 'David',
-      equipment: 'Guiter',
-      timestamp: '2015-03-25',
-    },
-    {
-      key: '5',
-      contact: 'Scott',
-      equipment: 'Guiter',
-      timestamp: '2015-03-25',
-    },
-  ];
-
-  const upcomingDataSource = [
-    {
-      key: '1',
-      customer: 'Mike',
-      equipment: 'Guiter',
-      serial: '123456',
-      due_date: '2015-03-25',
-      contact: 'John',
-      status: 'Pending',
-    },
-    {
-      key: '2',
-      customer: 'John',
-      equipment: 'Guiter',
-      serial: '456789',
-      due_date: '2015-03-15',
-      contact: 'Albert',
-      status: 'Complete',
-    },
-    {
-      key: '3',
-      customer: 'Albert',
-      equipment: 'Guiter',
-      serial: '235689',
-      due_date: '2015-05-25',
-      contact: 'John',
-      status: 'Pending',
-    },
-    {
-      key: '4',
-      customer: 'David',
-      equipment: 'Guiter',
-      serial: '124578',
-      due_date: '2015-03-02',
-      contact: 'Scott',
-      status: 'Complete',
-    },
-    {
-      key: '5',
-      customer: 'Scott',
-      equipment: 'Guiter',
-      serial: '112356',
-      due_date: '2015-08-05',
-      contact: 'David',
-      status: 'Complete',
-    },
-  ];
 
   return (
     <>
@@ -218,11 +134,7 @@ export default function DashboardModule() {
               {translate('Notification')}
             </h3>
 
-            <RecentTable
-              entity={'notification'}
-              dataTableColumns={notificationTableColumns}
-              sampletDataSource={notificationDataSource}
-            />
+            <RecentTable entity={'notification'} dataTableColumns={notificationTableColumns} />
           </div>
         </Col>
         <Col className="gutter-row w-full" sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 6 }}>
@@ -231,7 +143,7 @@ export default function DashboardModule() {
             activeCustomer={clientResult?.active}
             newCustomer={clientResult?.new}
           /> */}
-          <CustomerPreviewCard isLoading={clientLoading} activeCustomer={10} newCustomer={90} />
+          <CustomerPreviewCard isLoading={false} activeCustomer={customerResult} newCustomer={100} />
         </Col>
       </Row>
       <div className="space30"></div>
@@ -239,14 +151,10 @@ export default function DashboardModule() {
         <Col className="gutter-row w-full" sm={{ span: 32 }} md={{ span: 32 }} lg={{ span: 32 }}>
           <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
             <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
-              {translate('Upcoming Calibrations')}
+              {'Upcoming Calibrations (This week)'}
             </h3>
 
-            <RecentTable
-              entity={'upcoming'}
-              dataTableColumns={upcomingTableColumns}
-              sampletDataSource={upcomingDataSource}
-            />
+            <RecentTable entity={'upcoming'} dataTableColumns={upcomingTableColumns} />
           </div>
         </Col>
       </Row>

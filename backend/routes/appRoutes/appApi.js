@@ -32,6 +32,7 @@ const inventoryController = require('@/controllers/appControllers/inventoryContr
 const customerController = require('@/controllers/appControllers/customerController');
 const equipmentController = require('@/controllers/appControllers/equipmentController');
 const userManagementController = require('@/controllers/appControllers/userManagementController');
+const notificationController = require('@/controllers/appControllers/notificationController');
 
 // //_________________________________ API for employees_____________________
 router
@@ -374,7 +375,10 @@ router
   .route('/customer/delete/:id')
   .delete(hasPermission('delete'), catchErrors(customerController.delete));
 router.route('/customer/list').get(hasPermission('read'), catchErrors(customerController.list));
-router.route('/customer/listAll').get(hasPermission('read'), catchErrors(customerController.listAll));
+router
+  .route('/customer/listAll')
+  .get(hasPermission('read'), catchErrors(customerController.listAll));
+router.route('/customer/summary').get(hasPermission('read'), catchErrors(customerController.summary));
 
 // //_________________________________________________________________API for Equipments_____________________
 
@@ -391,6 +395,7 @@ router
   .route('/equipment/delete/:id')
   .delete(hasPermission('delete'), catchErrors(equipmentController.delete));
 router.route('/equipment/list').get(hasPermission('read'), catchErrors(equipmentController.list));
+router.route('/equipment/summary').get(hasPermission('read'), catchErrors(equipmentController.summary));
 
 // //_________________________________________________________________API for User Management_____________________
 
@@ -407,5 +412,21 @@ router
   .route('/user/delete/:id')
   .delete(hasPermission('delete'), catchErrors(userManagementController.delete));
 router.route('/user/list').get(hasPermission('read'), catchErrors(userManagementController.list));
+
+// //_________________________________________________________________API for Notification_____________________
+
+router
+  .route('/notification/read/:id')
+  .get(hasPermission('read'), catchErrors(notificationController.read));
+router
+  .route('/notification/list')
+  .get(hasPermission('read'), catchErrors(notificationController.list));
+
+router
+  .route('/upcoming/list')
+  .get(hasPermission('read'), catchErrors(notificationController.upcoming));
+router
+  .route('/upcoming/summary')
+  .get(hasPermission('read'), catchErrors(notificationController.summary));
 
 module.exports = router;

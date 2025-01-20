@@ -17,6 +17,9 @@ const { isValidAdminToken } = require('./controllers/coreControllers/authJwtCont
 const errorHandlers = require('./handlers/errorHandlers');
 const erpApiRouter = require('./routes/appRoutes/appApi');
 
+const CronJob = require('cron').CronJob;
+const notificationController = require('@/controllers/appControllers/notificationController');
+
 // create our Express app
 const app = express();
 
@@ -74,6 +77,18 @@ if (app.get('env') === 'development') {
 
 // production error handler
 app.use(errorHandlers.productionErrors);
+
+// notificationController.sendMail();
+
+// new CronJob('00 00 9 * * *', () => {
+//   try {
+//     console.log('Notification Crop Job run');
+//     notificationController.sendMail();
+//     // notificationController.update();
+//   } catch(e) {
+//     console.log("Nofication Crop Job error : ", e);
+//   }
+// });
 
 // done! we export it so we can start the site in start.js
 module.exports = app;
