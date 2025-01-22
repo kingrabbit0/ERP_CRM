@@ -80,15 +80,15 @@ app.use(errorHandlers.productionErrors);
 
 // notificationController.sendMail();
 
-// new CronJob('00 00 9 * * *', () => {
-//   try {
-//     console.log('Notification Crop Job run');
-//     notificationController.sendMail();
-//     // notificationController.update();
-//   } catch(e) {
-//     console.log("Nofication Crop Job error : ", e);
-//   }
-// });
+new CronJob('00 00 9 * * *', () => {
+  try {
+    console.log('Notification Crop Job run');
+    notificationController.sendMail();
+    notificationController.update();
+  } catch(e) {
+    console.log("Nofication Crop Job error : ", e);
+  }
+});
 
 // done! we export it so we can start the site in start.js
 module.exports = app;

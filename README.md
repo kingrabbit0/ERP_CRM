@@ -1,9 +1,5 @@
 <div align="center">
-    <h1>Open "Fair-Code" Source ERP / CRM | Node.js React.js</h1>
-    <p align="center">
-        <p>KOMEQ ERP CRM | Simple To Use | 44 Languages </p>
-    </p>
-
+    <h1>Service Nett CRM</h1>
 </div>
 
 ## How To
@@ -88,7 +84,7 @@ Reason behind error: This is caused by the node.js V17 compatible issues with Op
 
 Try one of these and error will be solved
 
-- > Downgrade to Node.js v16.
+- > Downgrade to Node.js v18.
 
 - > Enable legacy OpenSSL provider
 
@@ -129,9 +125,3 @@ Once the website is up and running, you can log in using the following credentia
 `username : admin@demo.com - password : admin123`
 
 Now you should be all set to run the project locally on your machine and explore its features.
-
-
-
-
-
-### Issue 1 : Failure of login

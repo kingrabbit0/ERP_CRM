@@ -1,13 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const custom = require('@/controllers/middlewaresControllers/pdfController');
 const { SendEmailNotification, SendSMSNotification } = require('@/emailTemplate/Notification');
 const mongoose = require('mongoose');
 const NotificationModel = mongoose.model('Notification');
 const SettingModel = mongoose.model('Setting');
 const EmailTModel = mongoose.model('Email');
-const ObjectId = mongoose.Types.ObjectId;
-const { Resend } = require('resend');
+
+const { MailerSend, EmailParams, Sender, Recipient, SMSParams } = require('mailersend');
 
 const sendMail = async () => {
   let email_setting = await SettingModel.find(
@@ -42,12 +39,15 @@ const sendMail = async () => {
 
   for (let i = 0; i < results.length; i++) {
     const notification = results[i];
-    const to = notification['equipment']['createdBy']['email'];
-    let from = '';
+    const to_mail = notification['equipment']['createdBy']['email'];
+    const to_sms = notification['equipment']['createdBy']['phone'];
+    let from_mail = '';
+    let from_sms = '';
     for (let j = 0; j < notification['equipment']['createdBy']['contacts'].length; j++) {
       const contactInfo = notification['equipment']['createdBy']['contacts'][i];
       if (contactInfo['name'] === notification['equipment']['contact']) {
-        from = contactInfo['email'];
+        from_mail = contactInfo['email'];
+        from_sms = contactInfo['phone'];
       }
     }
     const contact = notification['equipment']['contact'];
@@ -56,18 +56,18 @@ const sendMail = async () => {
     const date = notification['date'];
 
     if (email_setting) {
-      sendViaEmailApi(from, to, contact, equipment, serial, date);
+      console.log('email_setting =>');
+      sendViaEmailApi(from_mail, to_mail, contact, equipment, serial, date);
     }
 
     if (sms_setting) {
-      // sendViaSMSApi(from, to, contact, equipment, serial, date);
+      console.log('sms_setting =>');
+      // sendViaSMSApi(from_sms, to_sms, contact, equipment, serial, date);
     }
   }
 };
 
 const sendViaEmailApi = async (from, to, contact, equipment, serial, date) => {
-  const resend = new Resend(process.env.RESEND_API);
-
   let title = '';
   let body = '';
 
@@ -83,21 +83,38 @@ const sendViaEmailApi = async (from, to, contact, equipment, serial, date) => {
     title = results[0]['emailSubject'];
     body = results[0]['emailBody'];
 
-    body = body.replace(/{{contact}}/g, "${contact}");
-    body = body.replace(/{{equipment}}/g, "${equipment}");
-    body = body.replace(/{{serial}}/g, "${serial}");
-    body = body.replace(/{{date}}/g, "${date}");
+    body = body.replace(/{{customer}}/g, 'customer');
+    body = body.replace(/{{contact}}/g, contact);
+    body = body.replace(/{{equipment}}/g, equipment);
+    body = body.replace(/{{serial}}/g, serial);
+    body = body.replace(/{{date}}/g, date);
   }
 
-  // Send the mail using the send method
-  const data = await resend.emails.send({
-    from: 'albertwalsh78@gmail.com',
-    to: 'bohdanlutsenko760@gmail.com',
-    subject: 'Equipment Calibration',
-    html: SendEmailNotification({ title, body, contact, equipment, serial, date }),
+  const mailersend = new MailerSend({
+    apiKey: process.env.API_KEY,
   });
 
-  return data;
+  const sentFrom = new Sender(process.env.SENDER_MAIL, 'servicenett');
+
+  const recipients = [new Recipient(to, 'Recipient')];
+
+  const text = SendEmailNotification({ title, body, contact, equipment, serial, date });
+  const emailParams = new EmailParams()
+    .setFrom(sentFrom)
+    .setTo(recipients)
+    .setReplyTo(sentFrom)
+    .setSubject('Equipment Calibration')
+    .setHtml(text)
+    .setText(text);
+
+  try {
+    await mailersend.email.send(emailParams);
+    console.log('Sending mail successfully');
+  } catch (e) {
+    console.log(e);
+  }
+
+  return 'data';
 };
 
 const sendViaSMSApi = async (from, to, contact, equipment, serial, date) => {
@@ -116,10 +133,26 @@ const sendViaSMSApi = async (from, to, contact, equipment, serial, date) => {
     title = results[0]['emailSubject'];
     body = results[0]['emailBody'];
 
-    body = body.replace(/{{contact}}/g, "${contact}");
-    body = body.replace(/{{equipment}}/g, "${equipment}");
-    body = body.replace(/{{serial}}/g, "${serial}");
-    body = body.replace(/{{date}}/g, "${date}");
+    body = body.replace(/{{contact}}/g, '${contact}');
+    body = body.replace(/{{equipment}}/g, '${equipment}');
+    body = body.replace(/{{serial}}/g, '${serial}');
+    body = body.replace(/{{date}}/g, '${date}');
+  }
+
+  const text = SendSMSNotification({ title, body, contact, equipment, serial, date });
+
+  const mailersend = new MailerSend({
+    apiKey: 'mlsn.b2375f222ebafa19a38e0dd1651be05074f7edd774fc7639c4fe6de62e219fbb',
+  });
+  const recipients = [to];
+
+  const smsParams = new SMSParams().setFrom(from).setTo(recipients).setText(text);
+
+  try {
+    await mailersend.email.send(smsParams);
+    console.log('send sms successfully');
+  } catch (error) {
+    console.log('Error :', error);
   }
 };
 
