@@ -107,6 +107,33 @@ const request = {
     }
   },
 
+  filterNotification: async ({ entity }) => {
+    try {
+      const response = await axios.get(entity + '/filterfields');
+      successHandler(response, {
+        notifyOnSuccess: false,
+        notifyOnFailed: false,
+      });
+      return response.data;
+    } catch (error) {
+      return errorHandler(error);
+    }
+  },
+
+  duringFilter: async ({ entity, during }) => {
+    try {
+      let query = `?during=${during}`;
+      const response = await axios.get(entity + '/duringFilter' + query);
+      successHandler(response, {
+        notifyOnSuccess: false,
+        notifyOnFailed: false,
+      });
+      return response.data;
+    } catch (error) {
+      return errorHandler(error);
+    }
+  },
+
   search: async ({ entity, options = {} }) => {
     try {
       let query = '?';

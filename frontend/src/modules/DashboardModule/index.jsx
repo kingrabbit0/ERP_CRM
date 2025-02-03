@@ -5,6 +5,7 @@ import { request } from '@/request';
 import useFetch from '@/hooks/useFetch';
 
 import RecentTable from './components/RecentTable';
+import NotificationTable from './components/NotificationTable';
 
 import SummaryCard from './components/SummaryCard';
 import CustomerPreviewCard from './components/CustomerPreviewCard';
@@ -23,24 +24,6 @@ export default function DashboardModule() {
   const { result: upcomingResult, isLoading: upcomingLoading } = useFetch(() =>
     request.summary({ entity: 'upcoming' })
   );
-
-  const notificationTableColumns = [
-    {
-      title: translate('contact_person'),
-      dataIndex: ['equipment', 'contact'],
-    },
-    {
-      title: translate('equipment'),
-      dataIndex: ['equipment', 'name'],
-    },
-    {
-      title: translate('notification_date'),
-      dataIndex: 'date',
-      render: (date) => {
-        return dayjs(date).format('DD/MM/YYYY');
-      },
-    },
-  ];
 
   const upcomingTableColumns = [
     {
@@ -101,7 +84,6 @@ export default function DashboardModule() {
   const cards = entityData.map((data, index) => {
     const { count, entity, isLoading, prefix } = data;
 
-    console.log('data =>', data);
     if (entity === 'offer') return null;
 
     return (
@@ -128,22 +110,22 @@ export default function DashboardModule() {
       <Row gutter={[32, 32]}>{cards}</Row>
       <div className="space30"></div>
       <Row gutter={[32, 32]}>
-        <Col className="gutter-row w-full" sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 18 }}>
+        <Col className="gutter-row w-full" sm={{ span: 16 }} md={{ span: 16 }} lg={{ span: 14 }}>
           <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
             <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
               {translate('Notification')}
             </h3>
 
-            <RecentTable entity={'notification'} dataTableColumns={notificationTableColumns} />
+            <NotificationTable entity={'notification'} />
           </div>
         </Col>
-        <Col className="gutter-row w-full" sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 6 }}>
+        <Col className="gutter-row w-full" sm={{ span: 16 }} md={{ span: 16 }} lg={{ span: 10 }}>
           {/* <CustomerPreviewCard
             isLoading={clientLoading}
             activeCustomer={clientResult?.active}
             newCustomer={clientResult?.new}
           /> */}
-          <CustomerPreviewCard isLoading={false} activeCustomer={customerResult} newCustomer={100} />
+          <CustomerPreviewCard />
         </Col>
       </Row>
       <div className="space30"></div>

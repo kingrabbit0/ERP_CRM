@@ -31,7 +31,7 @@ export default function HeaderContent() {
       const result = await checkImage(BASE_URL + currentAdmin?.photo);
       setHasPhotoprofile(result);
     }
-    fetchData();
+    // fetchData();
     return () => {
       return false;
     };

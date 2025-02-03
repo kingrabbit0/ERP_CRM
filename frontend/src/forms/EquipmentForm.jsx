@@ -167,7 +167,7 @@ export default function EquipmentForm({ isUpdateForm = false }) {
         </Col>
         <Col className="gutter-row" span={24}>
           <Form.Item
-            label={translate('customer')}
+            label={translate('Contact Person')}
             name="contact"
             rules={[
               {
