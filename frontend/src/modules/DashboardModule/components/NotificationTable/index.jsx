@@ -46,7 +46,7 @@ export default function NotificationTable({ ...props }) {
     return { text: data, value: data };
   });
 
-  const contactFilter = filterData?.contact.map((data) => {
+  const customerFilter = filterData?.customer.map((data) => {
     return { text: data, value: data };
   });
 
@@ -56,12 +56,12 @@ export default function NotificationTable({ ...props }) {
 
   const dataTableColumns = [
     {
-      title: translate('contact_person'),
-      dataIndex: ['equipment', 'contact'],
+      title: translate('customer'),
+      dataIndex: ['equipment', 'createdBy', 'name'],
       filterSearch: true,
-      filters: contactFilter || [{ text: '100', value: '100' }],
+      filters: customerFilter || [{ text: '100', value: '100' }],
       onFilter: (value, record) => {
-        return record.equipment.contact.includes(value);
+        return record.equipment.createdBy.name.includes(value);
       },
     },
     {

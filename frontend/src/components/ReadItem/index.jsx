@@ -27,8 +27,10 @@ export default function ReadItem({ config }) {
       const propsKey = props.dataIndex;
       const propsTitle = props.title;
       const isDate = props.isDate || false;
+      const isInterval = propsKey == 'interval';
       let value = valueByString(currentResult, propsKey);
       value = isDate ? dayjs(value).format('DD/MM/YYYY') : value;
+      value = isInterval ? (value == '6' ? '6 Months' : '1 Year') : value;
       list.push({ propsKey, label: propsTitle, value: value });
     });
     setListState(list);

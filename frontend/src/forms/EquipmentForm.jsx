@@ -74,8 +74,8 @@ export default function EquipmentForm({ isUpdateForm = false }) {
   };
 
   const intervalItems = [
-    { label: '6 Months', value: '6' },
-    { label: '1 Year', value: '12' },
+    { label: '6 Months', value: 6 },
+    { label: '1 Year', value: 12 },
   ];
 
   return (
@@ -141,11 +141,8 @@ export default function EquipmentForm({ isUpdateForm = false }) {
               {
                 required: true,
               },
-              {
-                validator: validateEmptyString,
-              },
             ]}
-            initialValue={'6'}
+            initialValue={6}
           >
             <Select suffixIcon={<CalendarOutlined />} options={intervalItems} />
           </Form.Item>

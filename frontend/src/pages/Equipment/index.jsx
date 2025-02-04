@@ -34,7 +34,7 @@ export default function Equipment() {
       title: translate('Interval'),
       dataIndex: 'interval',
       render: (interval) => {
-        return interval == '6' ? '6 Months' : '12 Months';
+        return interval == 6 ? '6 Months' : '12 Months';
       },
     },
     {
