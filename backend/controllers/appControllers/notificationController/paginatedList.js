@@ -8,7 +8,7 @@ const paginatedList = async (req, res) => {
   // const skip = page * limit - limit;
   try {
     //  Query the database for a list of all results
-    const resultsPromise = Model.find({})
+    const resultsPromise = Model.find({ removed: false })
       .sort({ created: 'desc' })
       .populate({
         path: 'equipment',
