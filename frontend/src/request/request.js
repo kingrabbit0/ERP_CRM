@@ -186,6 +186,19 @@ const request = {
       return errorHandler(error);
     }
   },
+  logList: async ({ entity }) => {
+    try {
+      const response = await axios.get(entity + '/logs');
+
+      successHandler(response, {
+        notifyOnSuccess: false,
+        notifyOnFailed: false,
+      });
+      return response.data;
+    } catch (error) {
+      return errorHandler(error);
+    }
+  },
 
   post: async ({ entity, jsonData, options = {} }) => {
     try {

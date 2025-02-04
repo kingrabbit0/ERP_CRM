@@ -42,7 +42,7 @@ export default function DashboardModule() {
       title: translate('calibration_due_date'),
       dataIndex: ['date'],
       render: (date) => {
-        return dayjs(date).format('DD/MM/YYYY');
+        return dayjs(date).format('MM/DD/YYYY');
       },
     },
     {

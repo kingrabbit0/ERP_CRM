@@ -13,7 +13,7 @@ export default function LogTable({ ...props }) {
   ];
 
   const asyncList = () => {
-    return request.list({ entity });
+    return request.logList({ entity });
   };
   const { result, isLoading, isSuccess } = useFetch(asyncList);
   const firstFiveItems = () => {

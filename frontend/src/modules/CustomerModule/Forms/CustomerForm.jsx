@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
-import { Form, Input, Button, Select, Divider, Row, Col } from 'antd';
+import { Form, Input, Button, Select, Divider, Row, Col, DatePicker } from 'antd';
 
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
-
-import { DatePicker } from 'antd';
 
 import useLanguage from '@/locale/useLanguage';
 
@@ -116,9 +114,9 @@ const EquipmentItemRow = ({ field, remove }) => {
               type: 'object',
             },
           ]}
-          initialValue={dayjs()}
+          getValueProps={(value) => ({ value: value ? dayjs(value) : null })}
         >
-          <DatePicker style={{ width: '100%' }} format={'DD/MM/YYYY'} />
+          <DatePicker style={{ width: '100%' }} format={'MM/DD/YYYY'} />
         </Form.Item>
       </Col>
       <Col className="gutter-row" span={5}>

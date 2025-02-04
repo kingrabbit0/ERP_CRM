@@ -162,7 +162,7 @@ export default function EquipmentForm({ isUpdateForm = false }) {
             ]}
             initialValue={dayjs()}
           >
-            <DatePicker style={{ width: '100%' }} format={'DD/MM/YYYY'} />
+            <DatePicker style={{ width: '100%' }} format={'MM/DD/YYYY'} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={24}>

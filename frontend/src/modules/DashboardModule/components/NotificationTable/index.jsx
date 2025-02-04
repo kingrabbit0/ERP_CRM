@@ -28,7 +28,7 @@ export default function NotificationTable({ ...props }) {
   const getDateFilterDropdown = ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
     <div style={{ padding: 8 }}>
       <RangePicker
-        onChange={(dates, dateStrings) => setSelectedKeys(dateStrings ? dateStrings : [])}
+        onChange={(dates) => setSelectedKeys(dates ? [dates] : [])}
         style={{ width: '100%', marginBottom: 8, display: 'block' }}
       />
       <Space>
@@ -47,6 +47,10 @@ export default function NotificationTable({ ...props }) {
   });
 
   const contactFilter = filterData?.contact.map((data) => {
+    return { text: data, value: data };
+  });
+
+  const serialFilter = filterData?.serial.map((data) => {
     return { text: data, value: data };
   });
 
@@ -70,10 +74,19 @@ export default function NotificationTable({ ...props }) {
       },
     },
     {
+      title: translate('serial'),
+      dataIndex: ['equipment', 'serial'],
+      filterSearch: true,
+      filters: serialFilter || [{ text: '140', value: '140' }],
+      onFilter: (value, record) => {
+        return record.equipment.serial.includes(value);
+      },
+    },
+    {
       title: translate('notification_date'),
       dataIndex: 'date',
       render: (date) => {
-        return dayjs(date).format('DD/MM/YYYY');
+        return dayjs(date).format('MM/DD/YYYY');
       },
       filterDropdown: getDateFilterDropdown,
       onFilter: (value, record) => {

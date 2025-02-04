@@ -8,20 +8,15 @@ const create = async (req, res) => {
     let body = req.body;
 
     // Creating a new document in the collection
-    const result = await new Model(body).save();
+    let result = await new Model(body).save();
     await notificationController.create(result);
-    // const updateResult = await Model.findOneAndUpdate(
-    //   { _id: result._id },
-    //   { equipments: equipment_IDs },
-    //   {
-    //     new: true,
-    //   }
-    // ).exec();
+    result = await Model.find({ _id: result._id })
+      .populate('createdBy', 'name');
 
     // Returning successfull response
     return res.status(200).json({
       success: true,
-      result: result,
+      result: result[0],
       message: 'Equipment created successfully',
     });
   } catch (error) {
