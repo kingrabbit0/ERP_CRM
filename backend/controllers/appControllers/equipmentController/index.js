@@ -2,6 +2,7 @@ const createCRUDController = require('@/controllers/middlewaresControllers/creat
 const methods = createCRUDController('Equipment');
 
 const create = require('./create');
+const remove = require('./delete');
 // const update = require('./update');
 const paginatedList = require('./paginatedList');
 const filterFieldsList = require('./filterFieldsList');
@@ -11,6 +12,7 @@ const filterPaginatedList = require('./filterPaginatedList');
 const summary = require('./summary');
 
 methods.create = create;
+methods.delete = remove;
 methods.list = paginatedList;
 methods.filterData = filterPaginatedList;
 methods.filterfields = filterFieldsList;
