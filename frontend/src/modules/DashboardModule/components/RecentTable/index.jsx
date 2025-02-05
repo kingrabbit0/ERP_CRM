@@ -91,14 +91,14 @@ export default function RecentTable({ ...props }) {
     return request.list({ entity });
   };
   const { result, isLoading, isSuccess } = useFetch(asyncList);
-  const firstFiveItems = () => {
-    if (isSuccess && result) return result.slice(0, 5);
+  const resultItems = () => {
+    if (isSuccess && result) return result;
     return [];
   };
 
   const { expandedRowData, tableColumns, tableHeader } = useResponsiveTable(
     dataTableColumns,
-    firstFiveItems()
+    resultItems()
   );
 
   return (
@@ -107,7 +107,7 @@ export default function RecentTable({ ...props }) {
         columns={dataTableColumns}
         rowKey={(item) => item._id}
         // dataSource={isSuccess && firstFiveItems()}
-        dataSource={firstFiveItems()}
+        dataSource={resultItems()}
         pagination={true}
         loading={isLoading}
       />

@@ -1,4 +1,4 @@
-import { Form, Input, message, Select, DatePicker, Row, Col } from 'antd';
+import { Form, Input, Select, DatePicker, Row, Col } from 'antd';
 import { UserOutlined, CalendarOutlined } from '@ant-design/icons';
 
 import { useEffect, useState } from 'react';
@@ -159,7 +159,7 @@ export default function EquipmentForm({ isUpdateForm = false }) {
             ]}
             initialValue={dayjs()}
           >
-            <DatePicker style={{ width: '100%' }} format={'MM/DD/YYYY'} />
+            <DatePicker style={{ width: '100%' }} format={'DD/MM/YYYY'} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" span={24}>

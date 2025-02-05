@@ -16,14 +16,14 @@ export default function UpcomingTable({ ...props }) {
     return request.list({ entity });
   };
   const { result, isLoading, isSuccess } = useFetch(asyncList);
-  const firstFiveItems = () => {
-    if (isSuccess && result) return result.slice(0, 5);
+  const resultItems = () => {
+    if (isSuccess && result) return result;
     return [];
   };
 
   const { expandedRowData, tableColumns, tableHeader } = useResponsiveTable(
     dataTableColumns,
-    firstFiveItems()
+    resultItems
   );
 
   return (
@@ -31,7 +31,7 @@ export default function UpcomingTable({ ...props }) {
       <Table
         columns={tableColumns}
         rowKey={(item) => item._id}
-        dataSource={isSuccess && firstFiveItems()}
+        dataSource={resultItems()}
         pagination={true}
         loading={isLoading}
         expandable={

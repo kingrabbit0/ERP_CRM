@@ -19,7 +19,6 @@ export default function CustomerPreviewCard({ isLoading = false }) {
   }, []);
 
   const onPanelChange = async (value, mode) => {
-    console.log(value.format('YYYY-MM-DD'), mode);
     if (mode == "month")
       await upDateFilterData(value.format('YYYY-MM-DD'));
   };
