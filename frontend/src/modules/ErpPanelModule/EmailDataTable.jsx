@@ -143,7 +143,7 @@ export default function EmailDataTable({ config, extra = [] }) {
   const dispatch = useDispatch();
 
   const handelDataTableLoad = (pagination) => {
-    const options = { page: pagination.current || 1, items: pagination.pageSize || 10 };
+    const options = { page: pagination.current || 1, items: pagination.pageSize || 5 };
     dispatch(erp.list({ entity, options }));
   };
 

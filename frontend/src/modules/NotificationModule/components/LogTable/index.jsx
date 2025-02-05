@@ -32,7 +32,7 @@ export default function LogTable({ ...props }) {
         columns={tableColumns}
         rowKey={(item) => item._id}
         dataSource={resultItems()}
-        pagination={true}
+        pagination={{pageSize: 5}}
         loading={isLoading}
         expandable={
           expandedRowData.length
