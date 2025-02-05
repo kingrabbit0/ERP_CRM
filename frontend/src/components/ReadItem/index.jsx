@@ -30,7 +30,7 @@ export default function ReadItem({ config }) {
       const isInterval = propsKey == 'interval';
       let value = valueByString(currentResult, propsKey);
       value = isDate ? dayjs(value).format('DD/MM/YYYY') : value;
-      value = isInterval ? (value == '6' ? '6 Months' : '1 Year') : value;
+      value = isInterval ? (value == '6' ? '6 Months' : (value == '12' ? '1 Year' : (value == '24' ? '2 Years': (value == '48' ? '4 Years': '')))) : value;
       list.push({ propsKey, label: propsTitle, value: value });
     });
     setListState(list);

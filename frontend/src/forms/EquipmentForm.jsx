@@ -76,6 +76,8 @@ export default function EquipmentForm({ isUpdateForm = false }) {
   const intervalItems = [
     { label: '6 Months', value: 6 },
     { label: '1 Year', value: 12 },
+    { label: '2 Year', value: 24 },
+    { label: '4 Year', value: 48 },
   ];
 
   return (

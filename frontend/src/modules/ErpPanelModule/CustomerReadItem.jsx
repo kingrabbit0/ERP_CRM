@@ -69,7 +69,7 @@ const EquipmentItem = ({ item }) => {
             textAlign: 'right',
           }}
         >
-          {item.interval == 6 ? '6 Months' : '1 Year'}
+          {item.interval == 6 ? '6 Months' : (item.interval == 12 ? '1 Year': (item.interval == 24 ? '2 Years' : (item.interval == 48 ? '4 Years' : "")))}
         </p>
       </Col>
       <Col className="gutter-row" span={5}>
