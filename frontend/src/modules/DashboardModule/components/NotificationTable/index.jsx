@@ -57,7 +57,7 @@ export default function NotificationTable({ ...props }) {
   const dataTableColumns = [
     {
       title: translate('customer'),
-      dataIndex: ['equipment', 'createdBy', 'name'],
+      dataIndex: ['createdBy', 'name'],
       filterSearch: true,
       filters: customerFilter || [{ text: '100', value: '100' }],
       onFilter: (value, record) => {
@@ -66,7 +66,7 @@ export default function NotificationTable({ ...props }) {
     },
     {
       title: translate('equipment'),
-      dataIndex: ['equipment', 'name'],
+      dataIndex: ['name'],
       filterSearch: true,
       filters: equipFilter || [{ text: '140', value: '140' }],
       onFilter: (value, record) => {
@@ -75,7 +75,7 @@ export default function NotificationTable({ ...props }) {
     },
     {
       title: translate('serial'),
-      dataIndex: ['equipment', 'serial'],
+      dataIndex: ['serial'],
       filterSearch: true,
       filters: serialFilter || [{ text: '140', value: '140' }],
       onFilter: (value, record) => {
@@ -84,7 +84,7 @@ export default function NotificationTable({ ...props }) {
     },
     {
       title: translate('notification_date'),
-      dataIndex: 'date',
+      dataIndex: 'nextDate',
       render: (date) => {
         return dayjs(date).format('MM/DD/YYYY');
       },

@@ -11,22 +11,26 @@ export default function NotificationModule() {
   const upcomingTableColumns = [
     {
       title: translate('schedule'),
-      dataIndex: ['date'],
+      dataIndex: ['nextDate'],
       render: (date) => {
         return dayjs(date).format('MM/DD/YYYY');
       },
     },
     {
       title: translate('customer_name'),
-      dataIndex: ['equipment', 'createdBy', 'name'],
+      dataIndex: ['createdBy', 'name'],
+    },
+    {
+      title: translate('contact_person'),
+      dataIndex: ['contact'],
     },
     {
       title: translate('equipment_name'),
-      dataIndex: ['equipment', 'name'],
+      dataIndex: ['name'],
     },
     {
       title: translate('serial'),
-      dataIndex: ['equipment', 'serial'],
+      dataIndex: ['serial'],
     },
   ];
 

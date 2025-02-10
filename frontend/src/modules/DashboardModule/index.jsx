@@ -28,32 +28,34 @@ export default function DashboardModule() {
   const upcomingTableColumns = [
     {
       title: translate('customer_name'),
-      dataIndex: ['equipment', 'createdBy', 'name'],
+      dataIndex: ['createdBy', 'name'],
     },
     {
       title: translate('equipment_name'),
-      dataIndex: ['equipment', 'name'],
+      dataIndex: ['name'],
     },
     {
       title: translate('serial_number'),
-      dataIndex: ['equipment', 'serial'],
+      dataIndex: ['serial'],
     },
     {
       title: translate('calibration_due_date'),
-      dataIndex: ['date'],
+      dataIndex: ['nextDate'],
       render: (date) => {
         return dayjs(date).format('MM/DD/YYYY');
       },
     },
     {
       title: translate('contact_person'),
-      dataIndex: ['equipment', 'contact'],
+      dataIndex: ['contact'],
     },
     {
       title: translate('Status'),
       dataIndex: 'status',
-      render: (status) => {
-        let color = status === 'pending' ? 'green' : 'volcano';
+      render: () => {
+        // let color = status === 'pending' ? 'green' : 'volcano';
+        let color = 'green';
+        let status = "pending";
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
@@ -116,7 +118,7 @@ export default function DashboardModule() {
               {translate('Search')}
             </h3>
 
-            <NotificationTable entity={'notification'} />
+            <NotificationTable entity={'equipment'} />
           </div>
         </Col>
         <Col className="gutter-row w-full" sm={{ span: 16 }} md={{ span: 16 }} lg={{ span: 10 }}>
