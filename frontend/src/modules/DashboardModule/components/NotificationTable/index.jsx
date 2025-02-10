@@ -70,7 +70,7 @@ export default function NotificationTable({ ...props }) {
       filterSearch: true,
       filters: equipFilter || [{ text: '140', value: '140' }],
       onFilter: (value, record) => {
-        return record.equipment.name.includes(value);
+        return record.name.includes(value);
       },
     },
     {
@@ -79,7 +79,7 @@ export default function NotificationTable({ ...props }) {
       filterSearch: true,
       filters: serialFilter || [{ text: '140', value: '140' }],
       onFilter: (value, record) => {
-        return record.equipment.serial.includes(value);
+        return record.serial.includes(value);
       },
     },
     {
@@ -92,7 +92,7 @@ export default function NotificationTable({ ...props }) {
       onFilter: (value, record) => {
         if (!value.length) return true;
         const [startDate, endDate] = value;
-        return dayjs(record.date).isBetween(startDate, endDate, null, '[]');
+        return dayjs(record.nextDate).isBetween(startDate, endDate, null, '[]');
       },
     },
   ];
