@@ -46,6 +46,10 @@ export default function Equipment() {
       title: translate('Contact Person'),
       dataIndex: 'contact',
     },
+    {
+      title: translate('Description'),
+      dataIndex: 'description',
+    },
   ];
 
   const dataTableColumns = [

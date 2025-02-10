@@ -180,6 +180,14 @@ export default function EquipmentForm({ isUpdateForm = false }) {
             <Select suffixIcon={<UserOutlined />} options={contactItems} />
           </Form.Item>
         </Col>
+        <Col className="gutter-row" span={24}>
+          <Form.Item
+            label={translate('description')}
+            name="description"
+          >
+            <Input placeholder="Description" />
+          </Form.Item>
+        </Col>
       </Row>
     </>
   );
