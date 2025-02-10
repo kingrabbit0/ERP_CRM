@@ -1,4 +1,4 @@
-import { Tag, Row, Col } from 'antd';
+import { Tag, Row, Col, Checkbox } from 'antd';
 import useLanguage from '@/locale/useLanguage';
 
 import { request } from '@/request';
@@ -59,6 +59,32 @@ export default function DashboardModule() {
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
+    },
+  ];
+
+  const serviceAgreementColumns = [
+    {
+      title: translate('customer_name'),
+      dataIndex: ['createdBy', 'name'],
+    },
+    {
+      title: translate('equipment_name'),
+      dataIndex: ['name'],
+    },
+    {
+      title: translate('serial_number'),
+      dataIndex: ['serial'],
+    },
+    {
+      title: translate('calibration_due_date'),
+      dataIndex: ['nextDate'],
+      render: (date) => {
+        return dayjs(date).format('MM/DD/YYYY');
+      },
+    },
+    {
+      title: translate('contact_person'),
+      dataIndex: ['contact'],
     },
   ];
 
@@ -135,10 +161,22 @@ export default function DashboardModule() {
         <Col className="gutter-row w-full" sm={{ span: 32 }} md={{ span: 32 }} lg={{ span: 32 }}>
           <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
             <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
-              {'Upcoming Calibrations'}
+              {translate('Upcoming Calibrations')}
             </h3>
 
             <RecentTable entity={'upcoming'} dataTableColumns={upcomingTableColumns} />
+          </div>
+        </Col>
+      </Row>
+      <div className="space30"></div>
+      <Row gutter={[32, 32]}>
+        <Col className="gutter-row w-full" sm={{ span: 32 }} md={{ span: 32 }} lg={{ span: 32 }}>
+          <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
+            <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
+              {translate('Service Agreement')}
+            </h3>
+
+            <RecentTable entity={'agreement'} dataTableColumns={serviceAgreementColumns} />
           </div>
         </Col>
       </Row>

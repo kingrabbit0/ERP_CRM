@@ -1,4 +1,4 @@
-import { Form, Input, Select, DatePicker, Row, Col } from 'antd';
+import { Form, Input, Select, DatePicker, Row, Col, Checkbox } from 'antd';
 import { UserOutlined, CalendarOutlined } from '@ant-design/icons';
 
 import { useEffect, useState } from 'react';
@@ -188,6 +188,14 @@ export default function EquipmentForm({ isUpdateForm = false }) {
             name="description"
           >
             <TextArea rows={4} placeholder="Description" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" span={24}>
+          <Form.Item
+            name="service"
+            initialValue={false}
+          >
+            <Checkbox >{translate('Service Agreement')}</Checkbox>
           </Form.Item>
         </Col>
       </Row>

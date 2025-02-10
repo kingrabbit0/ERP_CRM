@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
-import { Form, Input, Button, Select, Divider, Row, Col, DatePicker } from 'antd';
+import { Form, Input, Button, Select, Divider, Row, Col, DatePicker, Checkbox } from 'antd';
 
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
@@ -139,6 +139,13 @@ const EquipmentItemRow = ({ field, remove }) => {
           name={[field.name, 'description']}
         >
           <TextArea rows={1} placeholder="Description" />
+        </Form.Item>
+      </Col>
+      <Col className="gutter-row" span={4}>
+        <Form.Item
+          name={[field.name, 'service']}
+        >
+          <Checkbox>{translate('Service Agreement')}</Checkbox>
         </Form.Item>
       </Col>
       <div style={{ position: 'absolute', right: '-20px', top: ' 5px' }}>

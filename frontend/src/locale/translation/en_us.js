@@ -309,6 +309,7 @@ const lang = {
   notifictioin_type: "Notification Type",
   notification_logs: "Notification Logs",
   interval: "Interval",
+  service_agreement: "Service Agreement",
 };
 
 export default lang;

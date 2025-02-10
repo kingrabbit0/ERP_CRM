@@ -82,6 +82,14 @@ export default function DataTable({ config, extra = [] }) {
       title: translate('Last Calibration Date'),
       dataIndex: 'lastDate',
     },
+    {
+      title: translate('Description'),
+      dataIndex: 'description',
+    },
+    {
+      title: translate('Serive Agreement'),
+      dataIndex: 'service',
+    },
   ];
 
   const handleRead = (record) => {
@@ -189,6 +197,9 @@ export default function DataTable({ config, extra = [] }) {
         cell.value = objectPath.get(record, dataIndex);
         if (dataIndex == 'lastDate') {
           cell.value = dayjs(cell.value).format('MM/DD/YYYY');
+        }
+        if (dataIndex == 'service') {
+          cell.value = cell.value? 'Yes': 'No';
         }
       });
     });

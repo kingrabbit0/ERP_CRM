@@ -406,6 +406,12 @@ router
 router
   .route('/equipment/filterData')
   .get(hasPermission('read'), catchErrors(equipmentController.filter));
+router
+  .route('/upcoming/list')
+  .get(hasPermission('read'), catchErrors(equipmentController.upcoming));
+router
+  .route('/agreement/list')
+  .get(hasPermission('read'), catchErrors(equipmentController.agreement));
 
 // //_________________________________________________________________API for User Management_____________________
 
@@ -438,9 +444,6 @@ router
   router
   .route('/notification/logs')
   .get(hasPermission('read'), catchErrors(notificationController.logs));
-router
-  .route('/upcoming/list')
-  .get(hasPermission('read'), catchErrors(notificationController.upcoming));
 router
   .route('/upcoming/summary')
   .get(hasPermission('read'), catchErrors(notificationController.summary));

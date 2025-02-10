@@ -31,6 +31,7 @@ export default function ReadItem({ config }) {
       let value = valueByString(currentResult, propsKey);
       value = isDate ? dayjs(value).format('MM/DD/YYYY') : value;
       value = isInterval ? (value == '6' ? '6 Months' : (value == '12' ? '1 Year' : (value == '24' ? '2 Years': (value == '48' ? '4 Years': '')))) : value;
+      value = propsKey == 'service'? (value == 'false'? 'No': 'Yes') : value;
       list.push({ propsKey, label: propsTitle, value: value });
     });
     setListState(list);

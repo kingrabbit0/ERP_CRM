@@ -41,6 +41,10 @@ const equipmentSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  service: {
+    type: Boolean,
+    default: false,
+  },
   created: {
     type: Date,
     default: Date.now,

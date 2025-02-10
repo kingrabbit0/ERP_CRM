@@ -306,6 +306,7 @@ const lang = {
     notifictioin_type: 'Varslingstype',
     notification_logs: 'Varslingslogger',
     interval: 'Intervall',
+  service_agreement: "Serviceavtale",
   };
 
   export default lang;

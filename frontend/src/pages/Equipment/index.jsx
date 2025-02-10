@@ -50,6 +50,10 @@ export default function Equipment() {
       title: translate('Description'),
       dataIndex: 'description',
     },
+    {
+      title: translate('Service Agreement'),
+      dataIndex: 'service',
+    },
   ];
 
   const dataTableColumns = [

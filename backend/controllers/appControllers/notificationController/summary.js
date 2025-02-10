@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 
-const Model = mongoose.model('Notification');
+const Model = mongoose.model('Equipment');
 
 const summary = async (req, res) => {
   try {
     //  Query the database for a list of all results
     const startDate = new Date();
-    const startDay = startDate.getDay();
     const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + (7 - startDay));
+    endDate.setMonth(startDate.getMonth() + 1);
+    endDate.setDate(1);
 
     const resultsPromise = Model.find({
-      date: { $gte: startDate, $lte: endDate },
-      status: 'pending',
+      nextDate: { $gt: startDate, $lt: endDate },
       removed: false,
     })
-      .sort({ date: 'asc' });
+      .sort({ nextDate: 'asc' });
 
     // Resolving both promises
     const [result] = await Promise.all([resultsPromise]);

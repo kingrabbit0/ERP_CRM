@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Divider } from 'antd';
+import { Checkbox, Divider } from 'antd';
 import dayjs from 'dayjs';
 
 import { Button, Row, Col, Descriptions, Statistic } from 'antd';
@@ -49,7 +49,10 @@ const ContactItem = ({ item }) => {
 const EquipmentItem = ({ item }) => {
   return (
     <Row gutter={[12, 0]} key={item._id}>
-      <Col className="gutter-row" span={5}>
+      <Col className="gutter-row" span={3}>
+        <Checkbox checked={item.service} disabled />
+      </Col>
+      <Col className="gutter-row" span={4}>
         <p style={{ marginBottom: 5 }}>
           <strong>{item.name}</strong>
         </p>
@@ -63,7 +66,7 @@ const EquipmentItem = ({ item }) => {
           {item.serial}
         </p>
       </Col>
-      <Col className="gutter-row" span={5}>
+      <Col className="gutter-row" span={4}>
         <p
           style={{
             textAlign: 'right',
@@ -72,7 +75,7 @@ const EquipmentItem = ({ item }) => {
           {item.interval == 6 ? '6 Months' : (item.interval == 12 ? '1 Year': (item.interval == 24 ? '2 Years' : (item.interval == 48 ? '4 Years' : "")))}
         </p>
       </Col>
-      <Col className="gutter-row" span={5}>
+      <Col className="gutter-row" span={4}>
         <p
           style={{
             textAlign: 'right',
@@ -242,7 +245,16 @@ export default function CustomerReadItem({ config, selectedItem }) {
       {equipmentslist.length > 0 && (
         <>
           <Row gutter={[12, 0]}>
-            <Col className="gutter-row" span={5}>
+            <Col className="gutter-row" span={3}>
+              <p
+                style={{
+                  color: '#00000073',
+                }}
+              >
+                <strong>{translate('serivce_agreement')}</strong>
+              </p>
+            </Col>
+            <Col className="gutter-row" span={4}>
               <p
                 style={{
                   color: '#00000073',
@@ -261,7 +273,7 @@ export default function CustomerReadItem({ config, selectedItem }) {
                 <strong>{translate('Serial')}</strong>
               </p>
             </Col>
-            <Col className="gutter-row" span={5}>
+            <Col className="gutter-row" span={4}>
               <p
                 style={{
                   textAlign: 'right',
@@ -271,7 +283,7 @@ export default function CustomerReadItem({ config, selectedItem }) {
                 <strong>{translate('Interval')}</strong>
               </p>
             </Col>
-            <Col className="gutter-row" span={5}>
+            <Col className="gutter-row" span={4}>
               <p
                 style={{
                   textAlign: 'right',

@@ -7,6 +7,8 @@ const update = require('./update');
 const paginatedList = require('./paginatedList');
 const filterFieldsList = require('./filterFieldsList');
 const filterPaginatedList = require('./filterPaginatedList');
+const upcoming = require('./upcoming');
+const agreement = require('./agreement');
 // const read = require('./read');
 // const allList = require('./all');
 const summary = require('./summary');
@@ -22,5 +24,7 @@ methods.filterfields = filterFieldsList;
 // methods.create = create;
 methods.update = update;
 methods.summary = summary;
+methods.upcoming = upcoming;
+methods.agreement = agreement;
 
 module.exports = methods;
