@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 
 import { request } from '@/request';
 
+const { TextArea } = Input;
+
 export default function EquipmentForm({ isUpdateForm = false }) {
   const translate = useLanguage();
   const [customerList, setCustomerList] = useState([]);
@@ -185,7 +187,7 @@ export default function EquipmentForm({ isUpdateForm = false }) {
             label={translate('description')}
             name="description"
           >
-            <Input placeholder="Description" />
+            <TextArea rows={4} placeholder="Description" />
           </Form.Item>
         </Col>
       </Row>
