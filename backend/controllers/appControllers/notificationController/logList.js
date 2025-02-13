@@ -28,7 +28,7 @@ const logList = async (req, res) => {
     const pages = Math.ceil(count / limit);
 
     // Getting Pagination Object
-    // const pagination = { page, pages, count };
+    const pagination = { page, pages, count };
     if (count > 0) {
       return res.status(200).json({
         success: true,
