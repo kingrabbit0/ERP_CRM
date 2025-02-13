@@ -193,6 +193,7 @@ export default function EquipmentForm({ isUpdateForm = false }) {
         <Col className="gutter-row" span={24}>
           <Form.Item
             name="service"
+            valuePropName="checked"
             initialValue={false}
           >
             <Checkbox >{translate('service_agreement')}</Checkbox>
