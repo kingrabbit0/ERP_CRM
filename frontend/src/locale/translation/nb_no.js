@@ -97,7 +97,7 @@ const lang = {
     yearly: 'Årlig',
     day: 'Dag',
     week: 'Uke',
-    month: 'Måned',
+    month: 'Måneder',
     year: 'År',
     subject: 'Emne',
     message: 'Melding',
@@ -297,6 +297,7 @@ const lang = {
     equipment_name: 'Utstyrsnavn',
     serial_number: 'Serienummer',
     calibration_interval: 'Kalibreringsintervall',
+    calibration_date: "Kalibreringsdato",
     calibration_next_date: 'Neste kalibreringsdato',
     calibration_upcoming: 'Kommende kalibreringer',
     calibration_due_date: 'Kalibreringsfrist',
@@ -306,7 +307,7 @@ const lang = {
     notifictioin_type: 'Varslingstype',
     notification_logs: 'Varslingslogger',
     interval: 'Intervall',
-  service_agreement: "Serviceavtale",
+  service_agreement: "Kalibreringsavtaler",
     upcoming_calibration: "Kommende kalibreringer",
     
   };

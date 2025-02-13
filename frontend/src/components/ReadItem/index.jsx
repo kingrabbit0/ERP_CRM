@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { useCrudContext } from '@/context/crud';
 import { selectCurrentItem } from '@/redux/crud/selectors';
 import { valueByString } from '@/utils/helpers';
+import useLanguage from '@/locale/useLanguage';
 
 export default function ReadItem({ config }) {
   let { readColumns } = config;
@@ -14,6 +15,7 @@ export default function ReadItem({ config }) {
   const { state } = useCrudContext();
   const { isReadBoxOpen } = state;
   const [listState, setListState] = useState([]);
+  const translate = useLanguage();
 
   const isFirstRun = useRef(true);
   useEffect(() => {
@@ -32,13 +34,13 @@ export default function ReadItem({ config }) {
       value = isDate ? dayjs(value).format('DD/MM/YYYY') : value;
       value = isInterval
         ? value == '6'
-          ? '6 Months'
+          ? '6 '+ translate('Month') + 's'
           : value == '12'
-          ? '1 Year'
+          ? '1 '+ translate('Year')
           : value == '24'
-          ? '2 Years'
+          ? '2 '+ translate('Year') + 's'
           : value == '48'
-          ? '4 Years'
+          ? '4 '+ translate('Year') + 's'
           : ''
         : value;
       value = propsKey == 'service' ? (value == 'false' ? 'No' : 'Yes') : value;

@@ -100,10 +100,10 @@ const EquipmentItemRow = ({ field, remove }) => {
         >
           <Select
             options={[
-              { value: 6, label: translate('6 Months') },
-              { value: 12, label: translate('1 Year') },
-              { value: 24, label: translate('2 Years') },
-              { value: 48, label: translate('4 Years') },
+              { value: 6, label: '6 '+ translate('Month') + 's' },
+              { value: 12, label: '1 '+ translate('Year') },
+              { value: 24, label: '2'+ translate('Year') + 's' },
+              { value: 48, label: '4'+ translate('Year') + 's' },
             ]}
           ></Select>
         </Form.Item>

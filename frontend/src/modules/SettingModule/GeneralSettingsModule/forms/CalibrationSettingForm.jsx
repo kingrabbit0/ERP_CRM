@@ -6,10 +6,10 @@ import useLanguage from '@/locale/useLanguage';
 export default function CalibrationSettingForm() {
   const translate = useLanguage();
   const intervalOptions = [
-    { label: '6 Months', value: '6' },
-    { label: '12 Months', value: '12' },
-    { label: '24 Months', value: '24' },
-    { label: '60 Months', value: '60' },
+    { label: '6 '+ translate('Month') + 's', value: 6 },
+    { label: '1 '+ translate('Year'), value: 12 },
+    { label: '2 '+ translate('Year') + 's', value: 24 },
+    { label: '4 '+ translate('Year') + 's', value: 48 },
   ];
   return (
     <>

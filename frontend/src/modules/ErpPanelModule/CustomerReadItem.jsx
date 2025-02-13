@@ -47,6 +47,8 @@ const ContactItem = ({ item }) => {
 };
 
 const EquipmentItem = ({ item }) => {
+  const translate = useLanguage();
+
   return (
     <Row gutter={[12, 0]} key={item._id}>
       <Col className="gutter-row" span={3}>
@@ -73,13 +75,13 @@ const EquipmentItem = ({ item }) => {
           }}
         >
           {item.interval == 6
-            ? '6 Months'
+            ? '6 '+ translate('Month') + 's'
             : item.interval == 12
-            ? '1 Year'
+            ? '1 '+ translate('Year')
             : item.interval == 24
-            ? '2 Years'
+            ? '2 '+ translate('Year') + 's'
             : item.interval == 48
-            ? '4 Years'
+            ? '4 '+ translate('Year') + 's'
             : ''}
         </p>
       </Col>

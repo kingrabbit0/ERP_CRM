@@ -3,7 +3,6 @@ import EquipmentForm from '@/forms/EquipmentForm';
 
 import useLanguage from '@/locale/useLanguage';
 import dayjs from 'dayjs';
-import { render } from 'react-dom';
 
 export default function Equipment() {
   const translate = useLanguage();
@@ -35,13 +34,13 @@ export default function Equipment() {
       dataIndex: 'interval',
       render: (interval) => {
         return interval == 6
-          ? '6 Months'
+          ? '6 '+ translate('Month') + 's'
           : interval == 12
-          ? '1 Year'
+          ? '1 '+ translate('Year')
           : interval == 24
-          ? '2 Years'
+          ? '2 '+ translate('Year') + 's'
           : interval == 48
-          ? '4 Years'
+          ? '4 '+ translate('Year') + 's'
           : '';
       },
     },
@@ -82,13 +81,13 @@ export default function Equipment() {
       dataIndex: 'interval',
       render: (interval) => {
         return interval == 6
-          ? '6 Months'
+          ? '6 '+ translate('Month') + 's'
           : interval == 12
-          ? '1 Year'
+          ? '1 '+ translate('Year')
           : interval == 24
-          ? '2 Years'
+          ? '2 '+ translate('Year') + 's'
           : interval == 48
-          ? '4 Years'
+          ? '4 '+ translate('Year') + 's'
           : '';
       },
     },
