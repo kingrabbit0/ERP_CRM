@@ -290,7 +290,7 @@ export default function CustomerReadItem({ config, selectedItem }) {
                   color: '#00000073',
                 }}
               >
-                <strong>{translate('Calibrate Date')}</strong>
+                <strong>{translate('calibration_date')}</strong>
               </p>
             </Col>
             <Col className="gutter-row" span={5}>

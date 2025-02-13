@@ -300,6 +300,7 @@ const lang = {
   equipment_name: "Equipment Name",
   serial_number: "Serial Number",
   calibration_interval: "Calibration Interval",
+  calibration_date: "Calibration Date",
   calibration_next_date: "Next Calibration Date",
   calibration_upcoming: "Upcoming Calibrations",
   calibration_due_date: "Calibration Due Date",
@@ -310,6 +311,7 @@ const lang = {
   notification_logs: "Notification Logs",
   interval: "Interval",
   service_agreement: "Service Agreement",
+  upcoming_calibration: "Upcoming Calibrations",
 };
 
 export default lang;

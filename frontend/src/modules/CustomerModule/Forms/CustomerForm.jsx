@@ -145,7 +145,7 @@ const EquipmentItemRow = ({ field, remove }) => {
         <Form.Item
           name={[field.name, 'service']}
         >
-          <Checkbox>{translate('Service Agreement')}</Checkbox>
+          <Checkbox>{translate('service_agreement')}</Checkbox>
         </Form.Item>
       </Col>
       <div style={{ position: 'absolute', right: '-20px', top: ' 5px' }}>
@@ -229,7 +229,7 @@ function LoadCustomerForm({ current = null }) {
       <Divider dashed />
       <Row gutter={[12, 12]} style={{ position: 'relative' }}>
         <Col className="gutter-row" span={6}>
-          <p>{translate('Conatact Person')}</p>
+          <p>{translate('contact_person')}</p>
         </Col>
         <Col className="gutter-row" span={8}>
           <p>{translate('Email')}</p>
@@ -276,7 +276,7 @@ function LoadCustomerForm({ current = null }) {
           <p>{translate('Interval')}</p>{' '}
         </Col>
         <Col className="gutter-row" span={4}>
-          <p>{translate('Calibrate Date')}</p>{' '}
+          <p>{translate('calibration_date')}</p>{' '}
         </Col>
         <Col className="gutter-row" span={4}>
           <p>{translate('Contact Person')}</p>{' '}

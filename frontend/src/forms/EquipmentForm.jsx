@@ -195,7 +195,7 @@ export default function EquipmentForm({ isUpdateForm = false }) {
             name="service"
             initialValue={false}
           >
-            <Checkbox >{translate('Service Agreement')}</Checkbox>
+            <Checkbox >{translate('service_agreement')}</Checkbox>
           </Form.Item>
         </Col>
       </Row>

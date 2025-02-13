@@ -307,6 +307,8 @@ const lang = {
     notification_logs: 'Varslingslogger',
     interval: 'Intervall',
   service_agreement: "Serviceavtale",
+    upcoming_calibration: "Kommende kalibreringer",
+    
   };
 
   export default lang;
