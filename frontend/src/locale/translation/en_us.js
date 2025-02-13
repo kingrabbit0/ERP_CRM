@@ -311,7 +311,6 @@ const lang = {
   notification_logs: "Notification Logs",
   interval: "Interval",
   service_agreement: "Service Agreement",
-  upcoming_calibration: "Upcoming Calibrations",
 };
 
 export default lang;

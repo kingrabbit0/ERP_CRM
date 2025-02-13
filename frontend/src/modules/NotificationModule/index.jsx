@@ -87,7 +87,7 @@ export default function NotificationModule() {
         <Col className="gutter-row w-full" sm={{ span: 32 }} md={{ span: 32 }} lg={{ span: 32 }}>
           <div className="whiteBox shadow pad20" style={{ height: '100%' }}>
             <h3 style={{ color: '#22075e', marginBottom: 5, padding: '0 20px 20px' }}>
-              {translate('Upcoming Calibrations')}
+              {translate('calibration_upcoming')}
             </h3>
 
             <UpcomingTable entity={'upcoming'} dataTableColumns={upcomingTableColumns} />
