@@ -261,7 +261,7 @@ export default function CustomerReadItem({ config, selectedItem }) {
                   color: '#00000073',
                 }}
               >
-                <strong>{translate('serivce_agreement')}</strong>
+                <strong>{translate('service_agreement')}</strong>
               </p>
             </Col>
             <Col className="gutter-row" span={4}>
