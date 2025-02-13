@@ -13,7 +13,7 @@ export default function NotificationModule() {
       title: translate('schedule'),
       dataIndex: ['nextDate'],
       render: (date) => {
-        return dayjs(date).format('MM/DD/YYYY');
+        return dayjs(date).format('DD/MM/YYYY');
       },
     },
     {
@@ -39,7 +39,7 @@ export default function NotificationModule() {
       title: translate('notification_date'),
       dataIndex: 'date',
       render: (date) => {
-        return dayjs(date).format('MM/DD/YYYY');
+        return dayjs(date).format('DD/MM/YYYY');
       },
     },
     {

@@ -196,10 +196,10 @@ export default function DataTable({ config, extra = [] }) {
         const cell = row.addCell();
         cell.value = objectPath.get(record, dataIndex);
         if (dataIndex == 'lastDate') {
-          cell.value = dayjs(cell.value).format('MM/DD/YYYY');
+          cell.value = dayjs(cell.value).format('DD/MM/YYYY');
         }
         if (dataIndex == 'service') {
-          cell.value = cell.value? 'Yes': 'No';
+          cell.value = cell.value ? 'Yes' : 'No';
         }
       });
     });
@@ -234,7 +234,7 @@ export default function DataTable({ config, extra = [] }) {
         columns={tableColumns}
         rowKey={(item) => item._id}
         dataSource={dataSource}
-        pagination={{pageSize: 5,}}
+        pagination={{ pageSize: 5 }}
         loading={listIsLoading}
         onChange={handelDataTableLoad}
         expandable={

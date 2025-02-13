@@ -42,7 +42,7 @@ export default function DashboardModule() {
       title: translate('calibration_due_date'),
       dataIndex: ['nextDate'],
       render: (date) => {
-        return dayjs(date).format('MM/DD/YYYY');
+        return dayjs(date).format('DD/MM/YYYY');
       },
     },
     {
@@ -55,7 +55,7 @@ export default function DashboardModule() {
       render: () => {
         // let color = status === 'pending' ? 'green' : 'volcano';
         let color = 'green';
-        let status = "pending";
+        let status = 'pending';
 
         return <Tag color={color}>{translate(status)}</Tag>;
       },
@@ -79,7 +79,7 @@ export default function DashboardModule() {
       title: translate('calibration_due_date'),
       dataIndex: ['nextDate'],
       render: (date) => {
-        return dayjs(date).format('MM/DD/YYYY');
+        return dayjs(date).format('DD/MM/YYYY');
       },
     },
     {

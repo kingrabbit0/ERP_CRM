@@ -118,7 +118,7 @@ const EquipmentItemRow = ({ field, remove }) => {
           ]}
           getValueProps={(value) => ({ value: value ? dayjs(value) : null })}
         >
-          <DatePicker style={{ width: '100%' }} format={'MM/DD/YYYY'} />
+          <DatePicker style={{ width: '100%' }} format={'DD/MM/YYYY'} />
         </Form.Item>
       </Col>
       <Col className="gutter-row" span={4}>
@@ -135,16 +135,12 @@ const EquipmentItemRow = ({ field, remove }) => {
         </Form.Item>
       </Col>
       <Col className="gutter-row" span={4}>
-        <Form.Item
-          name={[field.name, 'description']}
-        >
+        <Form.Item name={[field.name, 'description']}>
           <TextArea rows={1} placeholder="Description" />
         </Form.Item>
       </Col>
       <Col className="gutter-row" span={4}>
-        <Form.Item
-          name={[field.name, 'service']}
-        >
+        <Form.Item name={[field.name, 'service']}>
           <Checkbox>{translate('service_agreement')}</Checkbox>
         </Form.Item>
       </Col>

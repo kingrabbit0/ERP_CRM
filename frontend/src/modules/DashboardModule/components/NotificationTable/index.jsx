@@ -86,7 +86,7 @@ export default function NotificationTable({ ...props }) {
       title: translate('notification_date'),
       dataIndex: 'nextDate',
       render: (date) => {
-        return dayjs(date).format('MM/DD/YYYY');
+        return dayjs(date).format('DD/MM/YYYY');
       },
       filterDropdown: getDateFilterDropdown,
       onFilter: (value, record) => {
@@ -120,7 +120,7 @@ export default function NotificationTable({ ...props }) {
         rowKey={(item) => item._id}
         dataSource={datasource}
         loading={isLoading}
-        pagination={{pageSize: 5}}
+        pagination={{ pageSize: 5 }}
       />
     </div>
   );

@@ -28,7 +28,7 @@ export default function Customer() {
       title: translate('Last Activity'),
       dataIndex: 'lastActivity',
       render: (date) => {
-        return dayjs(date).format('MM/DD/YYYY');
+        return dayjs(date).format('DD/MM/YYYY');
       },
     },
   ];

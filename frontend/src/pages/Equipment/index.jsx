@@ -34,7 +34,15 @@ export default function Equipment() {
       title: translate('Interval'),
       dataIndex: 'interval',
       render: (interval) => {
-        return interval == 6 ? '6 Months' : (interval == 12 ? '1 Year' : (interval == 24 ? '2 Years': (interval == 48 ? '4 Years' : "")));
+        return interval == 6
+          ? '6 Months'
+          : interval == 12
+          ? '1 Year'
+          : interval == 24
+          ? '2 Years'
+          : interval == 48
+          ? '4 Years'
+          : '';
       },
     },
     {
@@ -73,14 +81,22 @@ export default function Equipment() {
       title: translate('Calibration Interval'),
       dataIndex: 'interval',
       render: (interval) => {
-        return interval == 6 ? '6 Months' : (interval == 12 ? '1 Year' : (interval == 24 ? '2 Years': (interval == 48 ? '4 Years' : "")));
+        return interval == 6
+          ? '6 Months'
+          : interval == 12
+          ? '1 Year'
+          : interval == 24
+          ? '2 Years'
+          : interval == 48
+          ? '4 Years'
+          : '';
       },
     },
     {
       title: translate('Calibration Next Date'),
       dataIndex: 'nextDate',
       render: (nextDate) => {
-        return dayjs(nextDate).format('MM/DD/YYYY');
+        return dayjs(nextDate).format('DD/MM/YYYY');
       },
     },
     {
