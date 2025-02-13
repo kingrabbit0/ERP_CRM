@@ -27,7 +27,7 @@ export default function Settings() {
       children: <GeneralSettings />,
     },
     {
-      label: translate('Notification Settings'),
+      label: translate('notification_setting'),
       icon: <AlertOutlined />,
       children: <NotificationSettings />,
     },

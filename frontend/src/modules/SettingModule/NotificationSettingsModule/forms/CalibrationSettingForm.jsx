@@ -14,7 +14,7 @@ export default function CalibrationSettingForm() {
   return (
     <>
       <Form.Item
-        label={translate('Email Notification')}
+        label={translate('Email') + ' ' + translate('Notification')}
         name="email_enabled"
         rules={[
           {
@@ -25,7 +25,7 @@ export default function CalibrationSettingForm() {
         <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} />
       </Form.Item>
       <Form.Item
-        label={translate('SMS Notification')}
+        label={translate('SMS') + ' ' + translate('Notification')}
         name="sms_enabled"
         rules={[
           {

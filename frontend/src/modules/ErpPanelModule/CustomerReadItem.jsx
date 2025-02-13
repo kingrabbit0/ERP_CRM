@@ -204,7 +204,7 @@ export default function CustomerReadItem({ config, selectedItem }) {
         </Row>
       </PageHeader>
       <Divider dashed />
-      <Descriptions title={`Client : ${customer.name}`}>
+      <Descriptions title={`${translate('Address')} : ${customer.name}`}>
         <Descriptions.Item label={translate('Address')}>{customer.address}</Descriptions.Item>
         <Descriptions.Item label={translate('email')}>{customer.email}</Descriptions.Item>
         <Descriptions.Item label={translate('Phone')}>{customer.phone}</Descriptions.Item>
@@ -280,7 +280,7 @@ export default function CustomerReadItem({ config, selectedItem }) {
                   color: '#00000073',
                 }}
               >
-                <strong>{translate('Serial')}</strong>
+                <strong>{translate('serial_number')}</strong>
               </p>
             </Col>
             <Col className="gutter-row" span={4}>

@@ -309,6 +309,9 @@ const lang = {
   notification_date: "Date/Time",
   notifictioin_type: "Notification Type",
   notification_logs: "Notification Logs",
+  notification_calendar: "Notification Calendar",
+  notification_setting: "Notification Settings",
+  notification_setting_update: "Update Notification Settings",
   interval: "Interval",
   service_agreement: "Service Agreement",
 };

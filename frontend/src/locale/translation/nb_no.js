@@ -306,8 +306,11 @@ const lang = {
     notification_date: 'Dato/Tid',
     notifictioin_type: 'Varslingstype',
     notification_logs: 'Varslingslogger',
+    notification_calendar: "Varslingskalender",
+    notification_setting: "Varslingsinnstillinger",
+    notification_setting_update: "Oppdater varslingsinnstillinger",
     interval: 'Intervall',
-  service_agreement: "Kalibreringsavtaler",
+    service_agreement: "Kalibreringsavtaler",
   };
 
   export default lang;

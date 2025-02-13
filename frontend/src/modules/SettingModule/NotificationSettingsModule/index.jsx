@@ -10,7 +10,7 @@ export default function NotificationSettingsModule({ config }) {
     <UpdateSettingModule config={config}>
       <SetingsSection
       title={translate('Notification')}
-      description={translate('Update notification setting')}
+      description={translate('notification_setting_update')}
       >
         <CalibrationSettingForm />
       </SetingsSection>
