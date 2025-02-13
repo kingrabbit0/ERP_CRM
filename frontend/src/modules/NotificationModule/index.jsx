@@ -29,7 +29,7 @@ export default function NotificationModule() {
       dataIndex: ['name'],
     },
     {
-      title: translate('serial'),
+      title: translate('serial_number'),
       dataIndex: ['serial'],
     },
   ];

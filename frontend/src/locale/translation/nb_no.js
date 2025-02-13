@@ -307,10 +307,10 @@ const lang = {
     notifictioin_type: 'Varslingstype',
     notification_logs: 'Varslingslogger',
     notification_calendar: "Varslingskalender",
-    notification_setting: "Varslingsinnstillinger",
-    notification_setting_update: "Oppdater varslingsinnstillinger",
+    notification_setting: "Varslings innstillinger",
+    notification_setting_update: "Oppdater varslings innstillinger",
     interval: 'Intervall',
-    service_agreement: "Kalibreringsavtaler",
+    service_agreement: "Kalibrering savtaler",
   };
 
   export default lang;
