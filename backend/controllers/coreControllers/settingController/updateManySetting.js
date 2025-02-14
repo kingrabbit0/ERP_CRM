@@ -51,7 +51,7 @@ const updateManySetting = async (req, res) => {
       return res.status(200).json({
         success: true,
         result: [],
-        message: 'we update all settings',
+        message: 'Updated all settings successfully',
       });
     }
   } catch (error) {
