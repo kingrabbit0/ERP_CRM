@@ -34,7 +34,7 @@ export default function EmailForm({ current = null }) {
         <div className="space40"></div>
 
         <Form.Item label={translate('Subject')} name="emailSubject">
-          <Input disabled={true} />
+          <Input />
         </Form.Item>
         <Form.Item label={translate('email Content')} name="emailBody">
           <ReactQuill theme="snow" value={body} onChange={setBodyValue} />

@@ -140,7 +140,11 @@ const EquipmentItemRow = ({ field, remove }) => {
         </Form.Item>
       </Col>
       <Col className="gutter-row" span={4}>
-        <Form.Item name={[field.name, 'service']}>
+        <Form.Item 
+          name={[field.name, 'service']} 
+          valuePropName="checked"
+          initialValue={false}
+        >
           <Checkbox>{translate('service_agreement')}</Checkbox>
         </Form.Item>
       </Col>
