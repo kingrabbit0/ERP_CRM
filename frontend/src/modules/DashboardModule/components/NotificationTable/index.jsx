@@ -61,7 +61,7 @@ export default function NotificationTable({ ...props }) {
       filterSearch: true,
       filters: customerFilter || [{ text: '100', value: '100' }],
       onFilter: (value, record) => {
-        return record.equipment.createdBy.name.includes(value);
+        return record.createdBy.name.includes(value);
       },
     },
     {
