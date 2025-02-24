@@ -121,6 +121,7 @@ export default function NotificationTable({ ...props }) {
         dataSource={datasource}
         loading={isLoading}
         pagination={{ pageSize: 5 }}
+        showSizeChanger={false}
       />
     </div>
   );

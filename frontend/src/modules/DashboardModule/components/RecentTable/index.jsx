@@ -109,6 +109,7 @@ export default function RecentTable({ ...props }) {
         // dataSource={isSuccess && firstFiveItems()}
         dataSource={resultItems()}
         pagination={{pageSize: 5}}
+        showSizeChanger={false}
         loading={isLoading}
       />
     </div>

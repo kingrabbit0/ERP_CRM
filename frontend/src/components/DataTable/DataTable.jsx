@@ -235,6 +235,7 @@ export default function DataTable({ config, extra = [] }) {
         rowKey={(item) => item._id}
         dataSource={dataSource}
         pagination={{ pageSize: 5 }}
+        showSizeChanger={false}
         loading={listIsLoading}
         onChange={handelDataTableLoad}
         expandable={

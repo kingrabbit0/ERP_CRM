@@ -33,6 +33,7 @@ export default function UpcomingTable({ ...props }) {
         rowKey={(item) => item._id}
         dataSource={resultItems()}
         pagination={{pageSize: 5}}
+        showSizeChanger={false}
         loading={isLoading}
         expandable={
           expandedRowData.length
