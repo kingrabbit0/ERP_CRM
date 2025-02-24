@@ -32,7 +32,7 @@ export default function UpcomingTable({ ...props }) {
         columns={tableColumns}
         rowKey={(item) => item._id}
         dataSource={resultItems()}
-        pagination={{pageSize: 5}}
+        pagination={{pageSize: 5, showSizeChanger: false}}
         showSizeChanger={false}
         loading={isLoading}
         expandable={

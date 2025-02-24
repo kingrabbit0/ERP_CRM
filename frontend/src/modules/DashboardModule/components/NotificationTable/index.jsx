@@ -120,7 +120,7 @@ export default function NotificationTable({ ...props }) {
         rowKey={(item) => item._id}
         dataSource={datasource}
         loading={isLoading}
-        pagination={{ pageSize: 5 }}
+        pagination={{ pageSize: 5, showSizeChanger: false }}
         showSizeChanger={false}
       />
     </div>
