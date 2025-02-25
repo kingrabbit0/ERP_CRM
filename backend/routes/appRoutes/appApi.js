@@ -381,6 +381,9 @@ router
 router
   .route('/customer/summary')
   .get(hasPermission('read'), catchErrors(customerController.summary));
+router
+  .route('/customer/filterCustomer')
+  .get(hasPermission('read'), catchErrors(customerController.filterCustomer));
 
 // //_________________________________________________________________API for Equipments_____________________
 

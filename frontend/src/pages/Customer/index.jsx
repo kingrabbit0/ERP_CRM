@@ -1,6 +1,8 @@
 import CustomerDataTableModule from '@/modules/CustomerModule/CustomerDataTableModule';
 import useLanguage from '@/locale/useLanguage';
 import dayjs from 'dayjs';
+import useFetch from '@/hooks/useFetch';
+import { request } from '@/request';
 
 export default function Customer() {
   const translate = useLanguage();
@@ -10,11 +12,25 @@ export default function Customer() {
     displayLabels: ['name', 'surname'],
     searchFields: 'name,surname,birthday',
   };
+
+  const { result: filterData } = useFetch(() =>
+    request.filterCustomer({ entity: 'customer' })
+  );
+
+  const customerFilter = filterData?.customer.map((data) => {
+    return { text: data, value: data };
+  });
+
   const entityDisplayLabels = ['number', 'client.company'];
   const dataTableColumns = [
     {
       title: translate('Customer Name'),
       dataIndex: 'name',
+      filterSearch: true,
+      filters: customerFilter,
+      onFilter: (value, record) => {
+        return record.name.includes(value);
+      },
     },
     {
       title: translate('Primary Contact'),
@@ -28,6 +44,8 @@ export default function Customer() {
       title: translate('Last Activity'),
       dataIndex: 'lastActivity',
       render: (date) => {
+        if (!date)
+          return ""
         return dayjs(date).format('DD/MM/YYYY');
       },
     },

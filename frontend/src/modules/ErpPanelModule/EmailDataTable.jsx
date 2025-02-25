@@ -183,7 +183,7 @@ export default function EmailDataTable({ config, extra = [] }) {
       </div>
 
       <Table
-        columns={tableColumns}
+        columns={dataTableColumns}
         rowKey={(item) => item._id}
         dataSource={dataSource}
         pagination={pagination}

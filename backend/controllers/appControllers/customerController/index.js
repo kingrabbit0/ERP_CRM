@@ -8,6 +8,7 @@ const read = require('./read');
 const allList = require('./all');
 const summary = require('./summary');
 const remove = require('./remove');
+const filterCustomer = require('./filterCustomer');
 
 methods.list = paginatedList;
 methods.listAll = allList;
@@ -17,5 +18,6 @@ methods.create = create;
 methods.update = update;
 methods.summary = summary;
 methods.delete = remove;
+methods.filterCustomer = filterCustomer;
 
 module.exports = methods;

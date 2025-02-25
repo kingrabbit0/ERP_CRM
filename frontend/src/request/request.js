@@ -120,6 +120,19 @@ const request = {
     }
   },
 
+  filterCustomer: async ({ entity }) => {
+    try {
+      const response = await axios.get(entity + '/filterCustomer');
+      successHandler(response, {
+        notifyOnSuccess: false,
+        notifyOnFailed: false,
+      });
+      return response.data;
+    } catch (error) {
+      return errorHandler(error);
+    }
+  },
+
   duringFilter: async ({ entity, during }) => {
     try {
       let query = `?during=${during}`;
